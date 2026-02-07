@@ -78,9 +78,8 @@
   <div class="br-field">
     <label for="type">{{ __("blogroll.sources.form.type") }}</label>
     <select id="type" name="type" required onchange="toggleTypeFields()">
-      <option value="opml_url" {% if source.type == 'opml_url' %}selected{% endif %}>OPML URL</option>
-      <option value="opml_file" {% if source.type == 'opml_file' %}selected{% endif %}>OPML File (paste content)</option>
-      <option value="manual" {% if source.type == 'manual' %}selected{% endif %}>Manual (add blogs individually)</option>
+      <option value="opml_url" {% if source.type == 'opml_url' %}selected{% endif %}>OPML URL (auto-sync)</option>
+      <option value="opml_file" {% if source.type == 'opml_file' %}selected{% endif %}>OPML File (one-time import)</option>
     </select>
     <span class="br-field-hint">{{ __("blogroll.sources.form.typeHint") }}</span>
   </div>
@@ -134,9 +133,6 @@ function toggleTypeFields() {
   } else if (type === 'opml_file') {
     urlField.style.display = 'none';
     opmlContentField.style.display = 'flex';
-  } else {
-    urlField.style.display = 'none';
-    opmlContentField.style.display = 'none';
   }
 }
 
