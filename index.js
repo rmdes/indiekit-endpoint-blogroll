@@ -86,6 +86,9 @@ export default class BlogrollEndpoint {
     protectedRouter.post("/blogs/:id/delete", blogsController.remove);
     protectedRouter.post("/blogs/:id/refresh", blogsController.refresh);
 
+    // Feed discovery (protected to prevent abuse)
+    protectedRouter.get("/api/discover", apiController.discover);
+
     return protectedRouter;
   }
 
