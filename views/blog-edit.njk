@@ -1,0 +1,199 @@
+{% extends "document.njk" %}
+
+{% block content %}
+<style>
+  .br-form {
+    max-width: 600px;
+  }
+
+  .br-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs, 0.25rem);
+    margin-block-end: var(--space-m, 1rem);
+  }
+
+  .br-field label {
+    font: var(--font-label, bold 0.875rem/1.4 sans-serif);
+  }
+
+  .br-field-hint {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+  }
+
+  .br-field input,
+  .br-field select,
+  .br-field textarea {
+    appearance: none;
+    background-color: var(--color-background, #fff);
+    border: 1px solid var(--color-outline-variant, #ccc);
+    border-radius: var(--border-radius-small, 0.25rem);
+    font: var(--font-body, 0.875rem/1.4 sans-serif);
+    padding: calc(var(--space-s, 0.75rem) / 2) var(--space-s, 0.75rem);
+    width: 100%;
+  }
+
+  .br-field textarea {
+    min-height: 100px;
+  }
+
+  .br-field input:focus,
+  .br-field select:focus,
+  .br-field textarea:focus {
+    border-color: var(--color-primary, #0066cc);
+    outline: 2px solid var(--color-primary, #0066cc);
+    outline-offset: 1px;
+  }
+
+  .br-field-inline {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-s, 0.75rem);
+  }
+
+  .br-field-inline input[type="checkbox"] {
+    width: auto;
+  }
+
+  .br-section {
+    margin-block-start: var(--space-l, 1.5rem);
+    padding-block-start: var(--space-l, 1.5rem);
+    border-block-start: 1px solid var(--color-outline-variant, #ddd);
+  }
+
+  .br-section h3 {
+    font: var(--font-subhead, bold 1rem/1.4 sans-serif);
+    margin-block-end: var(--space-s, 0.75rem);
+  }
+
+  .br-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 0.5rem);
+  }
+
+  .br-item {
+    background: var(--color-offset, #f5f5f5);
+    border-radius: var(--border-radius-small, 0.25rem);
+    padding: var(--space-xs, 0.5rem) var(--space-s, 0.75rem);
+  }
+
+  .br-item-title {
+    font: var(--font-body, 0.875rem/1.4 sans-serif);
+    font-weight: 600;
+  }
+
+  .br-item-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .br-item-title a:hover {
+    text-decoration: underline;
+  }
+
+  .br-item-meta {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.75rem/1.4 sans-serif);
+  }
+
+  .br-empty {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+    text-align: center;
+    padding: var(--space-m, 1rem);
+  }
+</style>
+
+<header class="page-header">
+  <a href="{{ baseUrl }}/blogs" class="page-header__back">{{ icon("previous") }} {{ __("blogroll.blogs.title") }}</a>
+  <h1 class="page-header__title">{{ title }}</h1>
+</header>
+
+{% for message in request.session.messages %}
+<div class="notice notice--{{ message.type }}">
+  <p>{{ message.content }}</p>
+</div>
+{% endfor %}
+
+<form method="post" action="{% if isNew %}{{ baseUrl }}/blogs{% else %}{{ baseUrl }}/blogs/{{ blog._id }}{% endif %}" class="br-form">
+  <div class="br-field">
+    <label for="feedUrl">{{ __("blogroll.blogs.form.feedUrl") }}</label>
+    <input type="url" id="feedUrl" name="feedUrl" value="{{ blog.feedUrl if blog else '' }}" required placeholder="https://example.com/feed.xml">
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.feedUrlHint") }}</span>
+  </div>
+
+  <div class="br-field">
+    <label for="title">{{ __("blogroll.blogs.form.title") }}</label>
+    <input type="text" id="title" name="title" value="{{ blog.title if blog else '' }}" placeholder="{{ __('blogroll.blogs.form.titlePlaceholder') }}">
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.titleHint") }}</span>
+  </div>
+
+  <div class="br-field">
+    <label for="siteUrl">{{ __("blogroll.blogs.form.siteUrl") }}</label>
+    <input type="url" id="siteUrl" name="siteUrl" value="{{ blog.siteUrl if blog else '' }}" placeholder="https://example.com">
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.siteUrlHint") }}</span>
+  </div>
+
+  <div class="br-field">
+    <label for="category">{{ __("blogroll.blogs.form.category") }}</label>
+    <input type="text" id="category" name="category" value="{{ blog.category if blog else '' }}" placeholder="Technology">
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.categoryHint") }}</span>
+  </div>
+
+  <div class="br-field">
+    <label for="tags">{{ __("blogroll.blogs.form.tags") }}</label>
+    <input type="text" id="tags" name="tags" value="{{ blog.tags | join(', ') if blog and blog.tags else '' }}" placeholder="indie, personal, tech">
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.tagsHint") }}</span>
+  </div>
+
+  <div class="br-field">
+    <label for="notes">{{ __("blogroll.blogs.form.notes") }}</label>
+    <textarea id="notes" name="notes" placeholder="{{ __('blogroll.blogs.form.notesPlaceholder') }}">{{ blog.notes if blog else '' }}</textarea>
+    <span class="br-field-hint">{{ __("blogroll.blogs.form.notesHint") }}</span>
+  </div>
+
+  <div class="br-field br-field-inline">
+    <input type="checkbox" id="pinned" name="pinned" {% if blog and blog.pinned %}checked{% endif %}>
+    <label for="pinned">{{ __("blogroll.blogs.form.pinned") }}</label>
+  </div>
+
+  <div class="br-field br-field-inline">
+    <input type="checkbox" id="hidden" name="hidden" {% if blog and blog.hidden %}checked{% endif %}>
+    <label for="hidden">{{ __("blogroll.blogs.form.hidden") }}</label>
+  </div>
+
+  <div class="button-group">
+    <button type="submit" class="button button--primary">
+      {% if isNew %}{{ __("blogroll.blogs.create") }}{% else %}{{ __("blogroll.blogs.save") }}{% endif %}
+    </button>
+    <a href="{{ baseUrl }}/blogs" class="button button--secondary">{{ __("blogroll.cancel") }}</a>
+  </div>
+</form>
+
+{% if not isNew and items %}
+<div class="br-section">
+  <h3>{{ __("blogroll.blogs.recentItems") }}</h3>
+  {% if items.length > 0 %}
+  <ul class="br-items-list">
+    {% for item in items %}
+    <li class="br-item">
+      <div class="br-item-title">
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+      </div>
+      <div class="br-item-meta">
+        {{ item.published | date("PPpp") }}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="br-empty">{{ __("blogroll.blogs.noItems") }}</p>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

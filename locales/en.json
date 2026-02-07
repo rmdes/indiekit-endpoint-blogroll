@@ -1,0 +1,122 @@
+{
+  "blogroll": {
+    "title": "Blogroll",
+    "description": "Manage your blogroll sources and blogs",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "edit": "Edit",
+    "sync": "Sync",
+    "refresh": "Refresh",
+    "cancel": "Cancel",
+    "never": "Never",
+
+    "stats": {
+      "title": "Overview",
+      "sources": "Sources",
+      "blogs": "Blogs",
+      "items": "Items",
+      "errors": "Errors",
+      "lastSync": "Last Sync"
+    },
+
+    "actions": {
+      "title": "Actions",
+      "syncNow": "Sync All Now",
+      "clearResync": "Clear & Re-sync",
+      "clearConfirm": "This will delete all cached items and re-fetch everything. Continue?"
+    },
+
+    "errors": {
+      "title": "Blogs with Errors",
+      "seeAll": "See all %{count} blogs with errors"
+    },
+
+    "sources": {
+      "title": "Sources",
+      "manage": "Manage Sources",
+      "add": "Add Source",
+      "new": "New Source",
+      "edit": "Edit Source",
+      "create": "Create Source",
+      "save": "Save Source",
+      "empty": "No sources configured yet.",
+      "recent": "Recent Sources",
+      "interval": "Every %{minutes} min",
+      "lastSync": "Last synced",
+      "deleteConfirm": "Delete this source? Blogs imported from it will remain.",
+      "created": "Source created successfully.",
+      "created_synced": "Source created and synced successfully.",
+      "created_sync_failed": "Source created, but sync failed: %{error}",
+      "updated": "Source updated successfully.",
+      "deleted": "Source deleted successfully.",
+      "synced": "Synced successfully. Added: %{added}, Updated: %{updated}",
+      "form": {
+        "name": "Name",
+        "type": "Type",
+        "typeHint": "How to import blogs from this source",
+        "url": "OPML URL",
+        "urlHint": "URL of the OPML file to import",
+        "opmlContent": "OPML Content",
+        "opmlContentHint": "Paste the full OPML XML content here",
+        "syncInterval": "Sync Interval",
+        "enabled": "Enable automatic syncing"
+      }
+    },
+
+    "blogs": {
+      "title": "Blogs",
+      "manage": "Manage Blogs",
+      "add": "Add Blog",
+      "new": "New Blog",
+      "edit": "Edit Blog",
+      "create": "Add Blog",
+      "save": "Save Blog",
+      "empty": "No blogs yet. Add one or import from an OPML source.",
+      "recent": "Recent Blogs",
+      "pinned": "Pinned",
+      "hidden": "Hidden",
+      "noItems": "No items fetched yet.",
+      "recentItems": "Recent Items",
+      "allCategories": "All Categories",
+      "allStatuses": "All Statuses",
+      "statusActive": "Active",
+      "statusError": "Error",
+      "statusPending": "Pending",
+      "clearFilters": "Clear filters",
+      "deleteConfirm": "Delete this blog and all its cached items?",
+      "created": "Blog added successfully.",
+      "created_synced": "Blog added and synced. Fetched %{items} items.",
+      "created_sync_failed": "Blog added, but initial fetch failed: %{error}",
+      "updated": "Blog updated successfully.",
+      "deleted": "Blog deleted successfully.",
+      "refreshed": "Blog refreshed. Added %{items} new items.",
+      "form": {
+        "feedUrl": "Feed URL",
+        "feedUrlHint": "RSS, Atom, or JSON Feed URL",
+        "title": "Title",
+        "titlePlaceholder": "Auto-detected from feed",
+        "titleHint": "Leave blank to use the feed title",
+        "siteUrl": "Site URL",
+        "siteUrlHint": "Link to the blog's homepage (optional)",
+        "category": "Category",
+        "categoryHint": "Group blogs by category for filtering and OPML export",
+        "tags": "Tags",
+        "tagsHint": "Comma-separated tags for additional organization",
+        "notes": "Notes",
+        "notesPlaceholder": "Why you follow this blog...",
+        "notesHint": "Personal notes (not shown publicly)",
+        "pinned": "Pin this blog (show at top of lists)",
+        "hidden": "Hide from public API (visible only to you)"
+      }
+    },
+
+    "api": {
+      "title": "API Endpoints",
+      "blogs": "List all blogs with metadata",
+      "items": "List recent items from all blogs",
+      "categories": "List all categories",
+      "opml": "Export as OPML",
+      "status": "Sync status and statistics"
+    }
+  }
+}

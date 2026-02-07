@@ -1,0 +1,273 @@
+{% extends "document.njk" %}
+
+{% block content %}
+<style>
+  .br-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl, 2rem);
+  }
+
+  .br-section {
+    background: var(--color-offset, #f5f5f5);
+    border-radius: var(--border-radius-small, 0.5rem);
+    padding: var(--space-m, 1.5rem);
+  }
+
+  .br-section h2 {
+    font: var(--font-heading, bold 1.25rem/1.4 sans-serif);
+    margin-block-end: var(--space-s, 0.75rem);
+    padding-block-end: var(--space-xs, 0.5rem);
+    border-block-end: 1px solid var(--color-outline-variant, #ddd);
+  }
+
+  .br-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-s, 0.75rem);
+  }
+
+  .br-stat {
+    background: var(--color-background, #fff);
+    border-radius: var(--border-radius-small, 0.5rem);
+    padding: var(--space-s, 0.75rem);
+    text-align: center;
+  }
+
+  .br-stat dt {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+    margin-block-end: var(--space-2xs, 0.25rem);
+  }
+
+  .br-stat dd {
+    font: var(--font-subhead, bold 1.125rem/1.4 sans-serif);
+    margin: 0;
+  }
+
+  .br-stat dd.br-stat--error {
+    color: var(--color-error, #dc3545);
+  }
+
+  .br-quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s, 0.75rem);
+    margin-block-start: var(--space-m, 1rem);
+  }
+
+  .br-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 0.5rem);
+  }
+
+  .br-list li {
+    background: var(--color-background, #fff);
+    border-radius: var(--border-radius-small, 0.25rem);
+    padding: var(--space-xs, 0.5rem) var(--space-s, 0.75rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs, 0.5rem);
+  }
+
+  .br-list-name {
+    font: var(--font-body, 0.875rem/1.4 sans-serif);
+    font-weight: 600;
+  }
+
+  .br-list-meta {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.75rem/1.4 sans-serif);
+  }
+
+  .br-list-error {
+    color: var(--color-error, #dc3545);
+    font: var(--font-caption, 0.75rem/1.4 sans-serif);
+  }
+
+  .br-api-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 0.5rem);
+  }
+
+  .br-api-list li {
+    background: var(--color-background, #fff);
+    border-radius: var(--border-radius-small, 0.25rem);
+    padding: var(--space-xs, 0.5rem) var(--space-s, 0.75rem);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+  }
+
+  .br-api-list code {
+    font-weight: 600;
+    color: var(--color-primary, #0066cc);
+  }
+
+  .br-empty {
+    color: var(--color-on-offset, #666);
+    font: var(--font-caption, 0.875rem/1.4 sans-serif);
+    text-align: center;
+    padding: var(--space-m, 1rem);
+  }
+</style>
+
+<header class="page-header">
+  <h1 class="page-header__title">{{ __("blogroll.title") }}</h1>
+  <p class="page-header__description">{{ __("blogroll.description") }}</p>
+</header>
+
+{% for message in request.session.messages %}
+<div class="notice notice--{{ message.type }}">
+  <p>{{ message.content }}</p>
+</div>
+{% endfor %}
+
+<div class="br-dashboard">
+  <section class="br-section">
+    <h2>{{ __("blogroll.stats.title") }}</h2>
+    <dl class="br-stats-grid">
+      <div class="br-stat">
+        <dt>{{ __("blogroll.stats.sources") }}</dt>
+        <dd>{{ stats.sources }}</dd>
+      </div>
+      <div class="br-stat">
+        <dt>{{ __("blogroll.stats.blogs") }}</dt>
+        <dd>{{ stats.blogs }}</dd>
+      </div>
+      <div class="br-stat">
+        <dt>{{ __("blogroll.stats.items") }}</dt>
+        <dd>{{ stats.items }}</dd>
+      </div>
+      <div class="br-stat">
+        <dt>{{ __("blogroll.stats.errors") }}</dt>
+        <dd class="{% if stats.errors > 0 %}br-stat--error{% endif %}">{{ stats.errors }}</dd>
+      </div>
+      <div class="br-stat">
+        <dt>{{ __("blogroll.stats.lastSync") }}</dt>
+        <dd>{% if syncStatus.lastSync %}{{ syncStatus.lastSync | date("PPpp") }}{% else %}{{ __("blogroll.never") }}{% endif %}</dd>
+      </div>
+    </dl>
+
+    <div class="br-quick-links">
+      <a href="{{ baseUrl }}/sources" class="button button--secondary">
+        {{ __("blogroll.sources.manage") }}
+      </a>
+      <a href="{{ baseUrl }}/blogs" class="button button--secondary">
+        {{ __("blogroll.blogs.manage") }}
+      </a>
+    </div>
+  </section>
+
+  <section class="br-section">
+    <h2>{{ __("blogroll.actions.title") }}</h2>
+    <div class="button-group">
+      <form method="post" action="{{ baseUrl }}/sync" style="display: inline;">
+        <button type="submit" class="button button--primary">
+          {{ __("blogroll.actions.syncNow") }}
+        </button>
+      </form>
+      <form method="post" action="{{ baseUrl }}/clear-resync" style="display: inline;" onsubmit="return confirm('{{ __("blogroll.actions.clearConfirm") }}');">
+        <button type="submit" class="button button--secondary">
+          {{ __("blogroll.actions.clearResync") }}
+        </button>
+      </form>
+    </div>
+  </section>
+
+  {% if blogsWithErrors.length > 0 %}
+  <section class="br-section">
+    <h2>{{ __("blogroll.errors.title") }}</h2>
+    <ul class="br-list">
+      {% for blog in blogsWithErrors %}
+      <li>
+        <div>
+          <span class="br-list-name">{{ blog.title }}</span>
+          <span class="br-list-error">{{ blog.lastError }}</span>
+        </div>
+        <a href="{{ baseUrl }}/blogs/{{ blog._id }}" class="button button--small button--secondary">
+          {{ __("blogroll.edit") }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if stats.errors > blogsWithErrors.length %}
+    <p class="br-empty">
+      <a href="{{ baseUrl }}/blogs?status=error">{{ __("blogroll.errors.seeAll", { count: stats.errors }) }}</a>
+    </p>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <section class="br-section">
+    <h2>{{ __("blogroll.sources.recent") }}</h2>
+    {% if sources.length > 0 %}
+    <ul class="br-list">
+      {% for source in sources %}
+      <li>
+        <div>
+          <span class="br-list-name">{{ source.name }}</span>
+          <span class="br-list-meta">{{ source.type }} • {% if source.lastSyncAt %}{{ source.lastSyncAt | date("PP") }}{% else %}{{ __("blogroll.never") }}{% endif %}</span>
+        </div>
+        <span class="badge {% if source.enabled %}badge--green{% else %}badge--yellow{% endif %}">
+          {% if source.enabled %}{{ __("blogroll.enabled") }}{% else %}{{ __("blogroll.disabled") }}{% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="br-empty">{{ __("blogroll.sources.empty") }}</p>
+    {% endif %}
+    <div class="br-quick-links">
+      <a href="{{ baseUrl }}/sources/new" class="button button--secondary button--small">
+        {{ __("blogroll.sources.add") }}
+      </a>
+    </div>
+  </section>
+
+  <section class="br-section">
+    <h2>{{ __("blogroll.blogs.recent") }}</h2>
+    {% if recentBlogs.length > 0 %}
+    <ul class="br-list">
+      {% for blog in recentBlogs %}
+      <li>
+        <div>
+          <span class="br-list-name">{{ blog.title }}</span>
+          <span class="br-list-meta">{{ blog.category or "Uncategorized" }} • {{ blog.itemCount }} items</span>
+        </div>
+        <span class="badge {% if blog.status == 'active' %}badge--green{% elif blog.status == 'error' %}badge--red{% else %}badge--yellow{% endif %}">
+          {{ blog.status }}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="br-empty">{{ __("blogroll.blogs.empty") }}</p>
+    {% endif %}
+    <div class="br-quick-links">
+      <a href="{{ baseUrl }}/blogs/new" class="button button--secondary button--small">
+        {{ __("blogroll.blogs.add") }}
+      </a>
+    </div>
+  </section>
+
+  <section class="br-section">
+    <h2>{{ __("blogroll.api.title") }}</h2>
+    <ul class="br-api-list">
+      <li><code>GET {{ baseUrl }}/api/blogs</code> - {{ __("blogroll.api.blogs") }}</li>
+      <li><code>GET {{ baseUrl }}/api/items</code> - {{ __("blogroll.api.items") }}</li>
+      <li><code>GET {{ baseUrl }}/api/categories</code> - {{ __("blogroll.api.categories") }}</li>
+      <li><code>GET {{ baseUrl }}/api/opml</code> - {{ __("blogroll.api.opml") }}</li>
+      <li><code>GET {{ baseUrl }}/api/status</code> - {{ __("blogroll.api.status") }}</li>
+    </ul>
+  </section>
+</div>
+{% endblock %}

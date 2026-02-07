@@ -1,0 +1,56 @@
+{
+  "name": "@rmdes/indiekit-endpoint-blogroll",
+  "version": "1.0.0",
+  "description": "Blogroll endpoint for Indiekit. Aggregates blog feeds from OPML, JSON feeds, or manual entry.",
+  "keywords": [
+    "indiekit",
+    "indiekit-plugin",
+    "indieweb",
+    "blogroll",
+    "opml",
+    "rss",
+    "feeds"
+  ],
+  "homepage": "https://github.com/rmdes/indiekit-endpoint-blogroll",
+  "bugs": {
+    "url": "https://github.com/rmdes/indiekit-endpoint-blogroll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmdes/indiekit-endpoint-blogroll.git"
+  },
+  "author": {
+    "name": "Ricardo Mendes",
+    "url": "https://rmendes.net"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "lib",
+    "locales",
+    "views",
+    "assets",
+    "index.js"
+  ],
+  "dependencies": {
+    "@indiekit/error": "^1.0.0-beta.25",
+    "@indiekit/frontend": "^1.0.0-beta.25",
+    "express": "^5.0.0",
+    "feedparser": "^2.2.10",
+    "sanitize-html": "^2.13.0",
+    "xml2js": "^0.6.2"
+  },
+  "peerDependencies": {
+    "@indiekit/indiekit": ">=1.0.0-beta.25"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
