@@ -33,6 +33,10 @@ export default class BlogrollEndpoint {
     return path.join(__dirname, "locales");
   }
 
+  get viewsDirectory() {
+    return path.join(__dirname, "views");
+  }
+
   get navigationItems() {
     return {
       href: this.options.mountPath,
