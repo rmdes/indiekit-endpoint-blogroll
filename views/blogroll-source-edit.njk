@@ -82,6 +82,9 @@
     <select id="type" name="type" required onchange="toggleTypeFields()">
       <option value="opml_url" {% if source.type == 'opml_url' %}selected{% endif %}>OPML URL (auto-sync)</option>
       <option value="opml_file" {% if source.type == 'opml_file' %}selected{% endif %}>OPML File (one-time import)</option>
+      {% if microsubAvailable %}
+      <option value="microsub" {% if source.type == 'microsub' %}selected{% endif %}>Microsub Subscriptions</option>
+      {% endif %}
     </select>
     <span class="br-field-hint">{{ __("blogroll.sources.form.typeHint") }}</span>
   </div>
@@ -96,6 +99,23 @@
     <label for="opmlContent">{{ __("blogroll.sources.form.opmlContent") }}</label>
     <textarea id="opmlContent" name="opmlContent" placeholder="<?xml version=&quot;1.0&quot;?>...">{{ source.opmlContent if source else '' }}</textarea>
     <span class="br-field-hint">{{ __("blogroll.sources.form.opmlContentHint") }}</span>
+  </div>
+
+  <div class="br-field" id="microsubChannelField" style="display: none;">
+    <label for="channelFilter">{{ __("blogroll.sources.form.microsubChannel") | default("Microsub Channel") }}</label>
+    <select id="channelFilter" name="channelFilter">
+      <option value="">All channels</option>
+      {% for channel in microsubChannels %}
+      <option value="{{ channel.uid }}" {% if source.channelFilter == channel.uid %}selected{% endif %}>{{ channel.name }}</option>
+      {% endfor %}
+    </select>
+    <span class="br-field-hint">{{ __("blogroll.sources.form.microsubChannelHint") | default("Sync feeds from a specific channel, or all channels") }}</span>
+  </div>
+
+  <div class="br-field" id="categoryPrefixField" style="display: none;">
+    <label for="categoryPrefix">{{ __("blogroll.sources.form.categoryPrefix") | default("Category Prefix") }}</label>
+    <input type="text" id="categoryPrefix" name="categoryPrefix" value="{{ source.categoryPrefix if source else '' }}" placeholder="e.g., Microsub: ">
+    <span class="br-field-hint">{{ __("blogroll.sources.form.categoryPrefixHint") | default("Optional prefix for blog categories (e.g., 'Following: ')") }}</span>
   </div>
 
   <div class="br-field">
@@ -128,13 +148,23 @@ function toggleTypeFields() {
   const type = document.getElementById('type').value;
   const urlField = document.getElementById('urlField');
   const opmlContentField = document.getElementById('opmlContentField');
+  const microsubChannelField = document.getElementById('microsubChannelField');
+  const categoryPrefixField = document.getElementById('categoryPrefixField');
 
+  // Hide all type-specific fields first
+  urlField.style.display = 'none';
+  opmlContentField.style.display = 'none';
+  if (microsubChannelField) microsubChannelField.style.display = 'none';
+  if (categoryPrefixField) categoryPrefixField.style.display = 'none';
+
+  // Show fields based on type
   if (type === 'opml_url') {
     urlField.style.display = 'flex';
-    opmlContentField.style.display = 'none';
   } else if (type === 'opml_file') {
-    urlField.style.display = 'none';
     opmlContentField.style.display = 'flex';
+  } else if (type === 'microsub') {
+    if (microsubChannelField) microsubChannelField.style.display = 'flex';
+    if (categoryPrefixField) categoryPrefixField.style.display = 'flex';
   }
 }
 

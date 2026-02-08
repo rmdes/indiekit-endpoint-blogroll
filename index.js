@@ -89,6 +89,10 @@ export default class BlogrollEndpoint {
     // Feed discovery (protected to prevent abuse)
     protectedRouter.get("/api/discover", apiController.discover);
 
+    // Microsub integration (protected - internal use)
+    protectedRouter.post("/api/microsub-webhook", apiController.microsubWebhook);
+    protectedRouter.get("/api/microsub-status", apiController.microsubStatus);
+
     return protectedRouter;
   }
 
