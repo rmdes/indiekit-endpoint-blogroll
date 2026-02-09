@@ -203,11 +203,7 @@
   <h1 class="page-header__title">{{ title }}</h1>
 </header>
 
-{% for message in request.session.messages %}
-<div class="notice notice--{{ message.type }}">
-  <p>{{ message.content }}</p>
-</div>
-{% endfor %}
+{# Flash messages rendered by Indiekit's native notificationBanner via success/error template vars #}
 
 <form method="post" action="{% if isNew %}{{ baseUrl }}/blogs{% else %}{{ baseUrl }}/blogs/{{ blog._id }}{% endif %}" class="br-form">
   {% if isNew %}

@@ -112,10 +112,7 @@
   <h1 class="page-header__title">{{ __("blogroll.blogs.title") }}</h1>
 </header>
 
-{% for message in request.session.messages %}
-<div class="notice notice--{{ message.type }}">
-  <p>{{ message.content }}</p>
-</div>
+{# Flash messages are now rendered by Indiekit's native notificationBanner via success/error template vars #}
 {% endfor %}
 
 <div class="br-blogs">
