@@ -1,6 +1,6 @@
 {
   "name": "@rmdes/indiekit-endpoint-blogroll",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Blogroll endpoint for Indiekit. Aggregates blog feeds from OPML, JSON feeds, or manual entry.",
   "keywords": [
     "indiekit",
