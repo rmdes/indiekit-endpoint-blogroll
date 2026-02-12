@@ -130,16 +130,6 @@
   gap: var(--space-s);
 }
 
-.blogroll-filter-select {
-  appearance: none;
-  background-color: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-s);
-  font-size: var(--step--1);
-  min-inline-size: 150px;
-  padding: var(--space-2xs) var(--space-s);
-}
-
 /* Form fields */
 .blogroll-form {
   max-inline-size: 600px;
@@ -152,37 +142,8 @@
   margin-block-end: var(--space-m);
 }
 
-.blogroll-field label {
-  font-weight: var(--font-weight-semibold);
-}
-
-.blogroll-field-hint {
-  color: var(--color-text-secondary);
-  font-size: var(--step--1);
-}
-
-.blogroll-field input,
-.blogroll-field select,
-.blogroll-field textarea {
-  appearance: none;
-  background-color: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-s);
-  font-size: var(--step--1);
-  padding: var(--space-2xs) var(--space-s);
-  width: 100%;
-}
-
-.blogroll-field textarea {
+.blogroll-field .textarea {
   min-block-size: 100px;
-}
-
-.blogroll-field input:focus,
-.blogroll-field select:focus,
-.blogroll-field textarea:focus {
-  border-color: var(--color-accent);
-  outline: 2px solid var(--color-accent);
-  outline-offset: 1px;
 }
 
 .blogroll-field--inline {
@@ -254,21 +215,6 @@
 
 .blogroll-discover .blogroll-field {
   margin-block-end: var(--space-s);
-}
-
-.blogroll-discover__input {
-  display: flex;
-  gap: var(--space-s);
-}
-
-.blogroll-discover__input input {
-  appearance: none;
-  background-color: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-s);
-  flex: 1;
-  font-size: var(--step--1);
-  padding: var(--space-2xs) var(--space-s);
 }
 
 .blogroll-discover__result {

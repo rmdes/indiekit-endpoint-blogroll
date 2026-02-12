@@ -5,12 +5,12 @@
     {% if isNew %}
     <div class="blogroll-discover">
       <div class="blogroll-field">
-        <label for="discoverUrl">{{ __("blogroll.blogs.form.discoverUrl") }}</label>
-        <div class="blogroll-discover__input">
-          <input type="url" id="discoverUrl" placeholder="https://tantek.com">
+        <label class="label" for="discoverUrl">{{ __("blogroll.blogs.form.discoverUrl") }}</label>
+        <div class="input-button-group">
+          <input class="input" type="url" id="discoverUrl" placeholder="https://tantek.com">
           {{ button({ type: "button", text: __("blogroll.blogs.form.discover"), classes: "button--secondary", attributes: { id: "discoverBtn" } }) }}
         </div>
-        <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.discoverHint") }}</span>
+        <span class="hint">{{ __("blogroll.blogs.form.discoverHint") }}</span>
       </div>
       <div id="discoverResult" class="blogroll-discover__result" style="display: none;"></div>
     </div>
@@ -18,39 +18,39 @@
     {% endif %}
 
     <div class="blogroll-field">
-      <label for="feedUrl">{{ __("blogroll.blogs.form.feedUrl") }}</label>
-      <input type="url" id="feedUrl" name="feedUrl" value="{{ blog.feedUrl if blog else '' }}" required placeholder="https://example.com/feed.xml">
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.feedUrlHint") }}</span>
+      <label class="label" for="feedUrl">{{ __("blogroll.blogs.form.feedUrl") }}</label>
+      <input class="input" type="url" id="feedUrl" name="feedUrl" value="{{ blog.feedUrl if blog else '' }}" required placeholder="https://example.com/feed.xml">
+      <span class="hint">{{ __("blogroll.blogs.form.feedUrlHint") }}</span>
     </div>
 
     <div class="blogroll-field">
-      <label for="title">{{ __("blogroll.blogs.form.title") }}</label>
-      <input type="text" id="title" name="title" value="{{ blog.title if blog else '' }}" placeholder="{{ __('blogroll.blogs.form.titlePlaceholder') }}">
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.titleHint") }}</span>
+      <label class="label" for="title">{{ __("blogroll.blogs.form.title") }}</label>
+      <input class="input" type="text" id="title" name="title" value="{{ blog.title if blog else '' }}" placeholder="{{ __('blogroll.blogs.form.titlePlaceholder') }}">
+      <span class="hint">{{ __("blogroll.blogs.form.titleHint") }}</span>
     </div>
 
     <div class="blogroll-field">
-      <label for="siteUrl">{{ __("blogroll.blogs.form.siteUrl") }}</label>
-      <input type="url" id="siteUrl" name="siteUrl" value="{{ blog.siteUrl if blog else '' }}" placeholder="https://example.com">
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.siteUrlHint") }}</span>
+      <label class="label" for="siteUrl">{{ __("blogroll.blogs.form.siteUrl") }}</label>
+      <input class="input" type="url" id="siteUrl" name="siteUrl" value="{{ blog.siteUrl if blog else '' }}" placeholder="https://example.com">
+      <span class="hint">{{ __("blogroll.blogs.form.siteUrlHint") }}</span>
     </div>
 
     <div class="blogroll-field">
-      <label for="category">{{ __("blogroll.blogs.form.category") }}</label>
-      <input type="text" id="category" name="category" value="{{ blog.category if blog else '' }}" placeholder="Technology">
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.categoryHint") }}</span>
+      <label class="label" for="category">{{ __("blogroll.blogs.form.category") }}</label>
+      <input class="input" type="text" id="category" name="category" value="{{ blog.category if blog else '' }}" placeholder="Technology">
+      <span class="hint">{{ __("blogroll.blogs.form.categoryHint") }}</span>
     </div>
 
     <div class="blogroll-field">
-      <label for="tags">{{ __("blogroll.blogs.form.tags") }}</label>
-      <input type="text" id="tags" name="tags" value="{{ blog.tags | join(', ') if blog and blog.tags else '' }}" placeholder="indie, personal, tech">
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.tagsHint") }}</span>
+      <label class="label" for="tags">{{ __("blogroll.blogs.form.tags") }}</label>
+      <input class="input" type="text" id="tags" name="tags" value="{{ blog.tags | join(', ') if blog and blog.tags else '' }}" placeholder="indie, personal, tech">
+      <span class="hint">{{ __("blogroll.blogs.form.tagsHint") }}</span>
     </div>
 
     <div class="blogroll-field">
-      <label for="notes">{{ __("blogroll.blogs.form.notes") }}</label>
-      <textarea id="notes" name="notes" placeholder="{{ __('blogroll.blogs.form.notesPlaceholder') }}">{{ blog.notes if blog else '' }}</textarea>
-      <span class="blogroll-field-hint">{{ __("blogroll.blogs.form.notesHint") }}</span>
+      <label class="label" for="notes">{{ __("blogroll.blogs.form.notes") }}</label>
+      <textarea class="textarea" id="notes" name="notes" placeholder="{{ __('blogroll.blogs.form.notesPlaceholder') }}">{{ blog.notes if blog else '' }}</textarea>
+      <span class="hint">{{ __("blogroll.blogs.form.notesHint") }}</span>
     </div>
 
     <div class="blogroll-field blogroll-field--inline">

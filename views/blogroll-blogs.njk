@@ -3,13 +3,13 @@
 {% block blogroll %}
   <div class="blogroll-filters">
     <form method="get" action="{{ baseUrl }}/blogs" style="display: flex; gap: var(--space-s); flex-wrap: wrap; align-items: center;">
-      <select name="category" class="blogroll-filter-select" onchange="this.form.submit()">
+      <select name="category" class="select" onchange="this.form.submit()">
         <option value="">{{ __("blogroll.blogs.allCategories") }}</option>
         {% for cat in categories %}
         <option value="{{ cat }}" {% if filterCategory == cat %}selected{% endif %}>{{ cat }}</option>
         {% endfor %}
       </select>
-      <select name="status" class="blogroll-filter-select" onchange="this.form.submit()">
+      <select name="status" class="select" onchange="this.form.submit()">
         <option value="">{{ __("blogroll.blogs.allStatuses") }}</option>
         <option value="active" {% if filterStatus == 'active' %}selected{% endif %}>{{ __("blogroll.blogs.statusActive") }}</option>
         <option value="error" {% if filterStatus == 'error' %}selected{% endif %}>{{ __("blogroll.blogs.statusError") }}</option>
