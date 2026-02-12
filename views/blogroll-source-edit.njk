@@ -1,147 +1,75 @@
-{% extends "document.njk" %}
+{% extends "layouts/blogroll.njk" %}
 
-{% block content %}
-<style>
-  .br-form {
-    max-width: 600px;
-  }
+{% block blogroll %}
+  <form method="post" action="{% if isNew %}{{ baseUrl }}/sources{% else %}{{ baseUrl }}/sources/{{ source._id }}{% endif %}" class="blogroll-form">
+    <div class="blogroll-field">
+      <label for="name">{{ __("blogroll.sources.form.name") }}</label>
+      <input type="text" id="name" name="name" value="{{ source.name if source else '' }}" required>
+    </div>
 
-  .br-field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs, 0.25rem);
-    margin-block-end: var(--space-m, 1rem);
-  }
+    <div class="blogroll-field">
+      <label for="type">{{ __("blogroll.sources.form.type") }}</label>
+      <select id="type" name="type" required onchange="toggleTypeFields()">
+        <option value="opml_url" {% if source.type == 'opml_url' %}selected{% endif %}>OPML URL (auto-sync)</option>
+        <option value="opml_file" {% if source.type == 'opml_file' %}selected{% endif %}>OPML File (one-time import)</option>
+        {% if microsubAvailable %}
+        <option value="microsub" {% if source.type == 'microsub' %}selected{% endif %}>Microsub Subscriptions</option>
+        {% endif %}
+      </select>
+      <span class="blogroll-field-hint">{{ __("blogroll.sources.form.typeHint") }}</span>
+    </div>
 
-  .br-field label {
-    font: var(--font-label, bold 0.875rem/1.4 sans-serif);
-  }
+    <div class="blogroll-field" id="urlField">
+      <label for="url">{{ __("blogroll.sources.form.url") }}</label>
+      <input type="url" id="url" name="url" value="{{ source.url if source else '' }}" placeholder="https://...">
+      <span class="blogroll-field-hint">{{ __("blogroll.sources.form.urlHint") }}</span>
+    </div>
 
-  .br-field-hint {
-    color: var(--color-on-offset, #666);
-    font: var(--font-caption, 0.875rem/1.4 sans-serif);
-  }
+    <div class="blogroll-field" id="opmlContentField" style="display: none;">
+      <label for="opmlContent">{{ __("blogroll.sources.form.opmlContent") }}</label>
+      <textarea id="opmlContent" name="opmlContent" placeholder="<?xml version=&quot;1.0&quot;?>...">{{ source.opmlContent if source else '' }}</textarea>
+      <span class="blogroll-field-hint">{{ __("blogroll.sources.form.opmlContentHint") }}</span>
+    </div>
 
-  .br-field input,
-  .br-field select,
-  .br-field textarea {
-    appearance: none;
-    background-color: var(--color-background, #fff);
-    border: 1px solid var(--color-outline-variant, #ccc);
-    border-radius: var(--border-radius-small, 0.25rem);
-    font: var(--font-body, 0.875rem/1.4 sans-serif);
-    padding: calc(var(--space-s, 0.75rem) / 2) var(--space-s, 0.75rem);
-    width: 100%;
-  }
+    <div class="blogroll-field" id="microsubChannelField" style="display: none;">
+      <label for="channelFilter">{{ __("blogroll.sources.form.microsubChannel") | default("Microsub Channel") }}</label>
+      <select id="channelFilter" name="channelFilter">
+        <option value="">All channels</option>
+        {% for channel in microsubChannels %}
+        <option value="{{ channel.uid }}" {% if source.channelFilter == channel.uid %}selected{% endif %}>{{ channel.name }}</option>
+        {% endfor %}
+      </select>
+      <span class="blogroll-field-hint">{{ __("blogroll.sources.form.microsubChannelHint") | default("Sync feeds from a specific channel, or all channels") }}</span>
+    </div>
 
-  .br-field textarea {
-    min-height: 150px;
-    font-family: monospace;
-  }
+    <div class="blogroll-field" id="categoryPrefixField" style="display: none;">
+      <label for="categoryPrefix">{{ __("blogroll.sources.form.categoryPrefix") | default("Category Prefix") }}</label>
+      <input type="text" id="categoryPrefix" name="categoryPrefix" value="{{ source.categoryPrefix if source else '' }}" placeholder="e.g., Microsub: ">
+      <span class="blogroll-field-hint">{{ __("blogroll.sources.form.categoryPrefixHint") | default("Optional prefix for blog categories (e.g., 'Following: ')") }}</span>
+    </div>
 
-  .br-field input:focus,
-  .br-field select:focus,
-  .br-field textarea:focus {
-    border-color: var(--color-primary, #0066cc);
-    outline: 2px solid var(--color-primary, #0066cc);
-    outline-offset: 1px;
-  }
+    <div class="blogroll-field">
+      <label for="syncInterval">{{ __("blogroll.sources.form.syncInterval") }}</label>
+      <select id="syncInterval" name="syncInterval">
+        <option value="30" {% if source.syncInterval == 30 %}selected{% endif %}>30 minutes</option>
+        <option value="60" {% if not source or source.syncInterval == 60 %}selected{% endif %}>1 hour</option>
+        <option value="180" {% if source.syncInterval == 180 %}selected{% endif %}>3 hours</option>
+        <option value="360" {% if source.syncInterval == 360 %}selected{% endif %}>6 hours</option>
+        <option value="720" {% if source.syncInterval == 720 %}selected{% endif %}>12 hours</option>
+        <option value="1440" {% if source.syncInterval == 1440 %}selected{% endif %}>24 hours</option>
+      </select>
+    </div>
 
-  .br-field-inline {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-s, 0.75rem);
-  }
+    <div class="blogroll-field blogroll-field--inline">
+      <input type="checkbox" id="enabled" name="enabled" {% if not source or source.enabled %}checked{% endif %}>
+      <label for="enabled">{{ __("blogroll.sources.form.enabled") }}</label>
+    </div>
 
-  .br-field-inline input[type="checkbox"] {
-    appearance: auto;
-    width: auto;
-    cursor: pointer;
-  }
-</style>
-
-<header class="page-header">
-  <a href="{{ baseUrl }}/sources" class="page-header__back">{{ icon("previous") }} {{ __("blogroll.sources.title") }}</a>
-  <h1 class="page-header__title">{{ title }}</h1>
-</header>
-
-{% for message in request.session.messages %}
-<div class="notice notice--{{ message.type }}">
-  <p>{{ message.content }}</p>
-</div>
-{% endfor %}
-
-<form method="post" action="{% if isNew %}{{ baseUrl }}/sources{% else %}{{ baseUrl }}/sources/{{ source._id }}{% endif %}" class="br-form">
-  <div class="br-field">
-    <label for="name">{{ __("blogroll.sources.form.name") }}</label>
-    <input type="text" id="name" name="name" value="{{ source.name if source else '' }}" required>
-  </div>
-
-  <div class="br-field">
-    <label for="type">{{ __("blogroll.sources.form.type") }}</label>
-    <select id="type" name="type" required onchange="toggleTypeFields()">
-      <option value="opml_url" {% if source.type == 'opml_url' %}selected{% endif %}>OPML URL (auto-sync)</option>
-      <option value="opml_file" {% if source.type == 'opml_file' %}selected{% endif %}>OPML File (one-time import)</option>
-      {% if microsubAvailable %}
-      <option value="microsub" {% if source.type == 'microsub' %}selected{% endif %}>Microsub Subscriptions</option>
-      {% endif %}
-    </select>
-    <span class="br-field-hint">{{ __("blogroll.sources.form.typeHint") }}</span>
-  </div>
-
-  <div class="br-field" id="urlField">
-    <label for="url">{{ __("blogroll.sources.form.url") }}</label>
-    <input type="url" id="url" name="url" value="{{ source.url if source else '' }}" placeholder="https://...">
-    <span class="br-field-hint">{{ __("blogroll.sources.form.urlHint") }}</span>
-  </div>
-
-  <div class="br-field" id="opmlContentField" style="display: none;">
-    <label for="opmlContent">{{ __("blogroll.sources.form.opmlContent") }}</label>
-    <textarea id="opmlContent" name="opmlContent" placeholder="<?xml version=&quot;1.0&quot;?>...">{{ source.opmlContent if source else '' }}</textarea>
-    <span class="br-field-hint">{{ __("blogroll.sources.form.opmlContentHint") }}</span>
-  </div>
-
-  <div class="br-field" id="microsubChannelField" style="display: none;">
-    <label for="channelFilter">{{ __("blogroll.sources.form.microsubChannel") | default("Microsub Channel") }}</label>
-    <select id="channelFilter" name="channelFilter">
-      <option value="">All channels</option>
-      {% for channel in microsubChannels %}
-      <option value="{{ channel.uid }}" {% if source.channelFilter == channel.uid %}selected{% endif %}>{{ channel.name }}</option>
-      {% endfor %}
-    </select>
-    <span class="br-field-hint">{{ __("blogroll.sources.form.microsubChannelHint") | default("Sync feeds from a specific channel, or all channels") }}</span>
-  </div>
-
-  <div class="br-field" id="categoryPrefixField" style="display: none;">
-    <label for="categoryPrefix">{{ __("blogroll.sources.form.categoryPrefix") | default("Category Prefix") }}</label>
-    <input type="text" id="categoryPrefix" name="categoryPrefix" value="{{ source.categoryPrefix if source else '' }}" placeholder="e.g., Microsub: ">
-    <span class="br-field-hint">{{ __("blogroll.sources.form.categoryPrefixHint") | default("Optional prefix for blog categories (e.g., 'Following: ')") }}</span>
-  </div>
-
-  <div class="br-field">
-    <label for="syncInterval">{{ __("blogroll.sources.form.syncInterval") }}</label>
-    <select id="syncInterval" name="syncInterval">
-      <option value="30" {% if source.syncInterval == 30 %}selected{% endif %}>30 minutes</option>
-      <option value="60" {% if not source or source.syncInterval == 60 %}selected{% endif %}>1 hour</option>
-      <option value="180" {% if source.syncInterval == 180 %}selected{% endif %}>3 hours</option>
-      <option value="360" {% if source.syncInterval == 360 %}selected{% endif %}>6 hours</option>
-      <option value="720" {% if source.syncInterval == 720 %}selected{% endif %}>12 hours</option>
-      <option value="1440" {% if source.syncInterval == 1440 %}selected{% endif %}>24 hours</option>
-    </select>
-  </div>
-
-  <div class="br-field br-field-inline">
-    <input type="checkbox" id="enabled" name="enabled" {% if not source or source.enabled %}checked{% endif %}>
-    <label for="enabled">{{ __("blogroll.sources.form.enabled") }}</label>
-  </div>
-
-  <div class="button-group">
-    <button type="submit" class="button button--primary">
-      {% if isNew %}{{ __("blogroll.sources.create") }}{% else %}{{ __("blogroll.sources.save") }}{% endif %}
-    </button>
-    <a href="{{ baseUrl }}/sources" class="button button--secondary">{{ __("blogroll.cancel") }}</a>
-  </div>
-</form>
+    <div class="blogroll-actions">
+      {{ button({ type: "submit", text: __("blogroll.sources.create") if isNew else __("blogroll.sources.save") }) }}
+      {{ button({ href: baseUrl + "/sources", text: __("blogroll.cancel"), classes: "button--secondary" }) }}
+    </div>
+  </form>
 
 <script>
 function toggleTypeFields() {

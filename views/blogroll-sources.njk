@@ -1,125 +1,39 @@
-{% extends "document.njk" %}
+{% extends "layouts/blogroll.njk" %}
 
-{% block content %}
-<style>
-  .br-sources {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m, 1.5rem);
-  }
-
-  .br-sources-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s, 0.75rem);
-  }
-
-  .br-source-item {
-    background: var(--color-offset, #f5f5f5);
-    border-radius: var(--border-radius-small, 0.5rem);
-    padding: var(--space-m, 1rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: var(--space-s, 0.75rem);
-  }
-
-  .br-source-info {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .br-source-name {
-    font: var(--font-subhead, bold 1rem/1.4 sans-serif);
-    margin-block-end: var(--space-2xs, 0.25rem);
-  }
-
-  .br-source-meta {
-    color: var(--color-on-offset, #666);
-    font: var(--font-caption, 0.875rem/1.4 sans-serif);
-  }
-
-  .br-source-url {
-    color: var(--color-primary, #0066cc);
-    font: var(--font-caption, 0.75rem/1.4 monospace);
-    word-break: break-all;
-    margin-block-start: var(--space-2xs, 0.25rem);
-  }
-
-  .br-source-error {
-    color: var(--color-error, #dc3545);
-    font: var(--font-caption, 0.75rem/1.4 sans-serif);
-    margin-block-start: var(--space-2xs, 0.25rem);
-  }
-
-  .br-source-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs, 0.5rem);
-  }
-
-  .br-empty {
-    text-align: center;
-    padding: var(--space-xl, 2rem);
-    color: var(--color-on-offset, #666);
-  }
-</style>
-
-<header class="page-header">
-  <a href="{{ baseUrl }}" class="page-header__back">{{ icon("previous") }} {{ __("blogroll.title") }}</a>
-  <h1 class="page-header__title">{{ __("blogroll.sources.title") }}</h1>
-</header>
-
-{% for message in request.session.messages %}
-<div class="notice notice--{{ message.type }}">
-  <p>{{ message.content }}</p>
-</div>
-{% endfor %}
-
-<div class="br-sources">
-  <div class="button-group">
-    <a href="{{ baseUrl }}/sources/new" class="button button--primary">
-      {{ __("blogroll.sources.add") }}
-    </a>
+{% block blogroll %}
+  <div class="blogroll-actions">
+    {{ button({ href: baseUrl + "/sources/new", text: __("blogroll.sources.add") }) }}
   </div>
 
   {% if sources.length > 0 %}
-  <ul class="br-sources-list">
+  <ul class="blogroll-list">
     {% for source in sources %}
-    <li class="br-source-item">
-      <div class="br-source-info">
-        <h2 class="br-source-name">{{ source.name }}</h2>
-        <p class="br-source-meta">
-          <span class="badge {% if source.enabled %}badge--green{% else %}badge--yellow{% endif %}">
-            {% if source.enabled %}{{ __("blogroll.enabled") }}{% else %}{{ __("blogroll.disabled") }}{% endif %}
-          </span>
+    <li class="blogroll-list__item">
+      <div class="blogroll-item__info">
+        <h2 class="blogroll-item__title">{{ source.name }}</h2>
+        <p class="blogroll-item__meta">
+          {{ badge({ color: "green" if source.enabled else "yellow", text: __("blogroll.enabled") if source.enabled else __("blogroll.disabled") }) }}
           <span>{{ source.type }}</span>
-          <span>• {{ __("blogroll.sources.interval", { minutes: source.syncInterval }) }}</span>
+          <span>· {{ __("blogroll.sources.interval", { minutes: source.syncInterval }) }}</span>
         </p>
         {% if source.url %}
-        <p class="br-source-url">{{ source.url }}</p>
+        <p class="blogroll-item__url">{{ source.url }}</p>
         {% endif %}
         {% if source.lastSyncError %}
-        <p class="br-source-error">{{ source.lastSyncError }}</p>
+        <p class="blogroll-item__error">{{ source.lastSyncError }}</p>
         {% endif %}
-        <p class="br-source-meta">
+        <p class="blogroll-item__meta">
           {{ __("blogroll.sources.lastSync") }}:
           {% if source.lastSyncAt %}{{ source.lastSyncAt | date("PPpp") }}{% else %}{{ __("blogroll.never") }}{% endif %}
         </p>
       </div>
-      <div class="br-source-actions">
+      <div class="blogroll-item__actions">
         <form method="post" action="{{ baseUrl }}/sources/{{ source._id }}/sync" style="display: inline;">
           <button type="submit" class="button button--small button--secondary">
             {{ icon("syndicate") }} {{ __("blogroll.sync") }}
           </button>
         </form>
-        <a href="{{ baseUrl }}/sources/{{ source._id }}" class="button button--small button--secondary">
-          {{ icon("updatePost") }} {{ __("blogroll.edit") }}
-        </a>
+        {{ button({ href: baseUrl + "/sources/" + source._id, text: __("blogroll.edit"), classes: "button--small button--secondary" }) }}
         <form method="post" action="{{ baseUrl }}/sources/{{ source._id }}/delete" style="display: inline;" onsubmit="return confirm('{{ __("blogroll.sources.deleteConfirm") }}');">
           <button type="submit" class="button button--small button--warning">
             {{ icon("delete") }}
@@ -130,10 +44,9 @@
     {% endfor %}
   </ul>
   {% else %}
-  <div class="br-empty">
-    <p>{{ __("blogroll.sources.empty") }}</p>
-    <p><a href="{{ baseUrl }}/sources/new" class="button button--primary">{{ __("blogroll.sources.add") }}</a></p>
+  <div class="blogroll-empty">
+    {{ prose({ text: __("blogroll.sources.empty") }) }}
+    {{ button({ href: baseUrl + "/sources/new", text: __("blogroll.sources.add") }) }}
   </div>
   {% endif %}
-</div>
 {% endblock %}

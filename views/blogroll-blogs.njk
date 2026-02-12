@@ -1,187 +1,67 @@
-{% extends "document.njk" %}
+{% extends "layouts/blogroll.njk" %}
 
-{% block content %}
-<style>
-  .br-blogs {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m, 1.5rem);
-  }
-
-  .br-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-s, 0.75rem);
-    align-items: center;
-  }
-
-  .br-filter-select {
-    appearance: none;
-    background-color: var(--color-background, #fff);
-    border: 1px solid var(--color-outline-variant, #ccc);
-    border-radius: var(--border-radius-small, 0.25rem);
-    font: var(--font-body, 0.875rem/1.4 sans-serif);
-    padding: calc(var(--space-s, 0.75rem) / 2) var(--space-s, 0.75rem);
-    min-width: 150px;
-  }
-
-  .br-blogs-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s, 0.75rem);
-  }
-
-  .br-blog-item {
-    background: var(--color-offset, #f5f5f5);
-    border-radius: var(--border-radius-small, 0.5rem);
-    padding: var(--space-m, 1rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: var(--space-s, 0.75rem);
-  }
-
-  .br-blog-item--pinned {
-    border-left: 3px solid var(--color-primary, #0066cc);
-  }
-
-  .br-blog-item--hidden {
-    opacity: 0.6;
-  }
-
-  .br-blog-info {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .br-blog-title {
-    font: var(--font-subhead, bold 1rem/1.4 sans-serif);
-    margin-block-end: var(--space-2xs, 0.25rem);
-  }
-
-  .br-blog-title a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .br-blog-title a:hover {
-    text-decoration: underline;
-  }
-
-  .br-blog-meta {
-    color: var(--color-on-offset, #666);
-    font: var(--font-caption, 0.875rem/1.4 sans-serif);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs, 0.5rem);
-    align-items: center;
-  }
-
-  .br-blog-url {
-    color: var(--color-primary, #0066cc);
-    font: var(--font-caption, 0.75rem/1.4 monospace);
-    word-break: break-all;
-    margin-block-start: var(--space-2xs, 0.25rem);
-  }
-
-  .br-blog-error {
-    color: var(--color-error, #dc3545);
-    font: var(--font-caption, 0.75rem/1.4 sans-serif);
-    margin-block-start: var(--space-2xs, 0.25rem);
-  }
-
-  .br-blog-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs, 0.5rem);
-  }
-
-  .br-empty {
-    text-align: center;
-    padding: var(--space-xl, 2rem);
-    color: var(--color-on-offset, #666);
-  }
-</style>
-
-<header class="page-header">
-  <a href="{{ baseUrl }}" class="page-header__back">{{ icon("previous") }} {{ __("blogroll.title") }}</a>
-  <h1 class="page-header__title">{{ __("blogroll.blogs.title") }}</h1>
-</header>
-
-{# Flash messages are now rendered by Indiekit's native notificationBanner via success/error template vars #}
-
-<div class="br-blogs">
-  <div class="br-filters">
-    <form method="get" action="{{ baseUrl }}/blogs" style="display: flex; gap: var(--space-s, 0.75rem); flex-wrap: wrap; align-items: center;">
-      <select name="category" class="br-filter-select" onchange="this.form.submit()">
+{% block blogroll %}
+  <div class="blogroll-filters">
+    <form method="get" action="{{ baseUrl }}/blogs" style="display: flex; gap: var(--space-s); flex-wrap: wrap; align-items: center;">
+      <select name="category" class="blogroll-filter-select" onchange="this.form.submit()">
         <option value="">{{ __("blogroll.blogs.allCategories") }}</option>
         {% for cat in categories %}
         <option value="{{ cat }}" {% if filterCategory == cat %}selected{% endif %}>{{ cat }}</option>
         {% endfor %}
       </select>
-      <select name="status" class="br-filter-select" onchange="this.form.submit()">
+      <select name="status" class="blogroll-filter-select" onchange="this.form.submit()">
         <option value="">{{ __("blogroll.blogs.allStatuses") }}</option>
         <option value="active" {% if filterStatus == 'active' %}selected{% endif %}>{{ __("blogroll.blogs.statusActive") }}</option>
         <option value="error" {% if filterStatus == 'error' %}selected{% endif %}>{{ __("blogroll.blogs.statusError") }}</option>
         <option value="pending" {% if filterStatus == 'pending' %}selected{% endif %}>{{ __("blogroll.blogs.statusPending") }}</option>
       </select>
       {% if filterCategory or filterStatus %}
-      <a href="{{ baseUrl }}/blogs" class="button button--small button--secondary">{{ __("blogroll.blogs.clearFilters") }}</a>
+      {{ button({ href: baseUrl + "/blogs", text: __("blogroll.blogs.clearFilters"), classes: "button--small button--secondary" }) }}
       {% endif %}
     </form>
   </div>
 
-  <div class="button-group">
-    <a href="{{ baseUrl }}/blogs/new" class="button button--primary">
-      {{ __("blogroll.blogs.add") }}
-    </a>
+  <div class="blogroll-actions">
+    {{ button({ href: baseUrl + "/blogs/new", text: __("blogroll.blogs.add") }) }}
   </div>
 
   {% if blogs.length > 0 %}
-  <ul class="br-blogs-list">
+  <ul class="blogroll-list">
     {% for blog in blogs %}
-    <li class="br-blog-item {% if blog.pinned %}br-blog-item--pinned{% endif %} {% if blog.hidden %}br-blog-item--hidden{% endif %}">
-      <div class="br-blog-info">
-        <h2 class="br-blog-title">
+    <li class="blogroll-list__item {% if blog.pinned %}blogroll-list__item--pinned{% endif %} {% if blog.hidden %}blogroll-list__item--hidden{% endif %}">
+      <div class="blogroll-item__info">
+        <h2 class="blogroll-item__title">
           {% if blog.siteUrl %}
           <a href="{{ blog.siteUrl }}" target="_blank" rel="noopener">{{ blog.title }}</a>
           {% else %}
           {{ blog.title }}
           {% endif %}
         </h2>
-        <p class="br-blog-meta">
-          <span class="badge {% if blog.status == 'active' %}badge--green{% elif blog.status == 'error' %}badge--red{% else %}badge--yellow{% endif %}">
-            {{ blog.status }}
-          </span>
+        <p class="blogroll-item__meta">
+          {{ badge({ color: "green" if blog.status == "active" else ("red" if blog.status == "error" else "yellow"), text: blog.status }) }}
           {% if blog.category %}
           <span>{{ blog.category }}</span>
           {% endif %}
-          <span>• {{ blog.itemCount or 0 }} items</span>
+          <span>· {{ blog.itemCount or 0 }} items</span>
           {% if blog.pinned %}
-          <span>• {{ __("blogroll.blogs.pinned") }}</span>
+          <span>· {{ __("blogroll.blogs.pinned") }}</span>
           {% endif %}
           {% if blog.hidden %}
-          <span>• {{ __("blogroll.blogs.hidden") }}</span>
+          <span>· {{ __("blogroll.blogs.hidden") }}</span>
           {% endif %}
         </p>
-        <p class="br-blog-url">{{ blog.feedUrl }}</p>
+        <p class="blogroll-item__url">{{ blog.feedUrl }}</p>
         {% if blog.lastError %}
-        <p class="br-blog-error">{{ blog.lastError }}</p>
+        <p class="blogroll-item__error">{{ blog.lastError }}</p>
         {% endif %}
       </div>
-      <div class="br-blog-actions">
+      <div class="blogroll-item__actions">
         <form method="post" action="{{ baseUrl }}/blogs/{{ blog._id }}/refresh" style="display: inline;">
           <button type="submit" class="button button--small button--secondary">
             {{ icon("syndicate") }} {{ __("blogroll.refresh") }}
           </button>
         </form>
-        <a href="{{ baseUrl }}/blogs/{{ blog._id }}" class="button button--small button--secondary">
-          {{ icon("updatePost") }} {{ __("blogroll.edit") }}
-        </a>
+        {{ button({ href: baseUrl + "/blogs/" + blog._id, text: __("blogroll.edit"), classes: "button--small button--secondary" }) }}
         <form method="post" action="{{ baseUrl }}/blogs/{{ blog._id }}/delete" style="display: inline;" onsubmit="return confirm('{{ __("blogroll.blogs.deleteConfirm") }}');">
           <button type="submit" class="button button--small button--warning">
             {{ icon("delete") }}
@@ -192,10 +72,9 @@
     {% endfor %}
   </ul>
   {% else %}
-  <div class="br-empty">
-    <p>{{ __("blogroll.blogs.empty") }}</p>
-    <p><a href="{{ baseUrl }}/blogs/new" class="button button--primary">{{ __("blogroll.blogs.add") }}</a></p>
+  <div class="blogroll-empty">
+    {{ prose({ text: __("blogroll.blogs.empty") }) }}
+    {{ button({ href: baseUrl + "/blogs/new", text: __("blogroll.blogs.add") }) }}
   </div>
   {% endif %}
-</div>
 {% endblock %}
