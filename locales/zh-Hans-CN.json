@@ -1,0 +1,133 @@
+{
+  "blogroll": {
+    "title": "博客列表",
+    "description": "管理您的博客列表来源和博客",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "edit": "编辑",
+    "sync": "同步",
+    "refresh": "刷新",
+    "cancel": "取消",
+    "never": "从不",
+
+    "stats": {
+      "title": "概览",
+      "sources": "来源",
+      "blogs": "博客",
+      "items": "条目",
+      "errors": "错误",
+      "lastSync": "最后同步"
+    },
+
+    "actions": {
+      "title": "操作",
+      "syncNow": "立即全部同步",
+      "clearResync": "清除并重新同步",
+      "clearConfirm": "这将删除所有缓存的条目并重新获取所有内容。继续吗?"
+    },
+
+    "errors": {
+      "title": "有错误的博客",
+      "seeAll": "查看所有 %{count} 个有错误的博客"
+    },
+
+    "sources": {
+      "title": "OPML 同步",
+      "manage": "OPML 同步",
+      "add": "添加 OPML 源",
+      "new": "新 OPML 源",
+      "edit": "编辑 OPML 源",
+      "create": "创建",
+      "save": "保存",
+      "empty": "未配置 OPML 源。使用此功能从 FreshRSS 或其他订阅阅读器批量导入博客。",
+      "recent": "OPML 源",
+      "interval": "每 %{minutes} 分钟",
+      "lastSync": "最后同步",
+      "deleteConfirm": "删除此 OPML 源?从中导入的博客将保留。",
+      "created": "OPML 源创建成功。",
+      "created_synced": "OPML 源创建并同步成功。",
+      "created_sync_failed": "OPML 源已创建,但同步失败:%{error}",
+      "updated": "OPML 源更新成功。",
+      "deleted": "OPML 源删除成功。",
+      "synced": "同步成功。已添加:%{added},已更新:%{updated}",
+      "form": {
+        "name": "名称",
+        "type": "导入类型",
+        "typeHint": "URL 定期同步,文件是一次性导入",
+        "url": "OPML URL",
+        "urlHint": "您的 OPML 文件的 URL(例如 FreshRSS 导出 URL)",
+        "opmlContent": "OPML 内容",
+        "opmlContentHint": "在此粘贴完整的 OPML XML 内容",
+        "syncInterval": "同步间隔",
+        "enabled": "启用自动同步"
+      }
+    },
+
+    "blogs": {
+      "title": "博客",
+      "manage": "管理博客",
+      "add": "添加博客",
+      "new": "新博客",
+      "edit": "编辑博客",
+      "create": "添加博客",
+      "save": "保存博客",
+      "empty": "还没有博客。添加一个或从 OPML 源导入。",
+      "recent": "最近的博客",
+      "pinned": "已固定",
+      "hidden": "已隐藏",
+      "noItems": "尚未获取任何条目。",
+      "recentItems": "最近的条目",
+      "allCategories": "所有类别",
+      "allStatuses": "所有状态",
+      "statusActive": "活跃",
+      "statusError": "错误",
+      "statusPending": "待处理",
+      "clearFilters": "清除筛选",
+      "deleteConfirm": "删除此博客及其所有缓存条目?",
+      "created": "博客添加成功。",
+      "created_synced": "博客已添加并同步。获取了 %{items} 个条目。",
+      "created_sync_failed": "博客已添加,但初始获取失败:%{error}",
+      "updated": "博客更新成功。",
+      "deleted": "博客删除成功。",
+      "refreshed": "博客已刷新。添加了 %{items} 个新条目。",
+      "form": {
+        "discoverUrl": "网站 URL",
+        "discover": "发现订阅源",
+        "discoverHint": "输入网站 URL 以自动发现其 RSS/Atom 订阅源",
+        "discoverNoUrl": "请输入网站 URL",
+        "discovering": "正在发现...",
+        "discoveringHint": "正在检查 RSS/Atom 订阅源...",
+        "discoverFailed": "发现订阅源失败",
+        "discoverNoFeeds": "在此网站上未找到订阅源",
+        "discoverFoundOne": "找到订阅源:",
+        "discoverFoundMultiple": "找到多个订阅源。点击一个进行选择:",
+        "discoverSelected": "已选择的订阅源:",
+        "feedUrl": "订阅源 URL",
+        "feedUrlHint": "RSS、Atom 或 JSON Feed URL",
+        "title": "标题",
+        "titlePlaceholder": "从订阅源自动检测",
+        "titleHint": "留空以使用订阅源标题",
+        "siteUrl": "网站 URL",
+        "siteUrlHint": "博客主页的链接(可选)",
+        "category": "类别",
+        "categoryHint": "按类别对博客进行分组以便筛选和 OPML 导出",
+        "tags": "标签",
+        "tagsHint": "用逗号分隔的标签,用于额外组织",
+        "notes": "笔记",
+        "notesPlaceholder": "您关注此博客的原因...",
+        "notesHint": "个人笔记(不公开显示)",
+        "pinned": "固定此博客(在列表顶部显示)",
+        "hidden": "从公共 API 隐藏(仅对您可见)"
+      }
+    },
+
+    "api": {
+      "title": "API 端点",
+      "blogs": "列出所有博客及元数据",
+      "items": "列出所有博客的最新条目",
+      "categories": "列出所有类别",
+      "opml": "导出为 OPML",
+      "status": "同步状态和统计"
+    }
+  }
+}

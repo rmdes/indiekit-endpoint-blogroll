@@ -1,0 +1,133 @@
+{
+  "blogroll": {
+    "title": "Blogroll",
+    "description": "Kelola sumber blogroll dan blog Anda",
+    "enabled": "Diaktifkan",
+    "disabled": "Dinonaktifkan",
+    "edit": "Edit",
+    "sync": "Sinkronkan",
+    "refresh": "Segarkan",
+    "cancel": "Batal",
+    "never": "Tidak pernah",
+
+    "stats": {
+      "title": "Ringkasan",
+      "sources": "Sumber",
+      "blogs": "Blog",
+      "items": "Item",
+      "errors": "Kesalahan",
+      "lastSync": "Sinkronisasi Terakhir"
+    },
+
+    "actions": {
+      "title": "Tindakan",
+      "syncNow": "Sinkronkan Semua Sekarang",
+      "clearResync": "Hapus & Sinkronkan Ulang",
+      "clearConfirm": "Ini akan menghapus semua item yang di-cache dan mengambil semuanya lagi. Lanjutkan?"
+    },
+
+    "errors": {
+      "title": "Blog dengan Kesalahan",
+      "seeAll": "Lihat semua %{count} blog dengan kesalahan"
+    },
+
+    "sources": {
+      "title": "Sinkronisasi OPML",
+      "manage": "Sinkronisasi OPML",
+      "add": "Tambah Sumber OPML",
+      "new": "Sumber OPML Baru",
+      "edit": "Edit Sumber OPML",
+      "create": "Buat",
+      "save": "Simpan",
+      "empty": "Tidak ada sumber OPML yang dikonfigurasi. Gunakan ini untuk mengimpor blog secara massal dari FreshRSS atau pembaca feed lainnya.",
+      "recent": "Sumber OPML",
+      "interval": "Setiap %{minutes} mnt",
+      "lastSync": "Terakhir disinkronkan",
+      "deleteConfirm": "Hapus sumber OPML ini? Blog yang diimpor darinya akan tetap ada.",
+      "created": "Sumber OPML berhasil dibuat.",
+      "created_synced": "Sumber OPML berhasil dibuat dan disinkronkan.",
+      "created_sync_failed": "Sumber OPML dibuat, tetapi sinkronisasi gagal: %{error}",
+      "updated": "Sumber OPML berhasil diperbarui.",
+      "deleted": "Sumber OPML berhasil dihapus.",
+      "synced": "Berhasil disinkronkan. Ditambahkan: %{added}, Diperbarui: %{updated}",
+      "form": {
+        "name": "Nama",
+        "type": "Jenis Impor",
+        "typeHint": "URL sinkronisasi berkala, File adalah impor sekali jalan",
+        "url": "URL OPML",
+        "urlHint": "URL ke file OPML Anda (mis., URL ekspor FreshRSS)",
+        "opmlContent": "Konten OPML",
+        "opmlContentHint": "Tempel konten XML OPML lengkap di sini",
+        "syncInterval": "Interval Sinkronisasi",
+        "enabled": "Aktifkan sinkronisasi otomatis"
+      }
+    },
+
+    "blogs": {
+      "title": "Blog",
+      "manage": "Kelola Blog",
+      "add": "Tambah Blog",
+      "new": "Blog Baru",
+      "edit": "Edit Blog",
+      "create": "Tambah Blog",
+      "save": "Simpan Blog",
+      "empty": "Belum ada blog. Tambahkan satu atau impor dari sumber OPML.",
+      "recent": "Blog Terbaru",
+      "pinned": "Disematkan",
+      "hidden": "Tersembunyi",
+      "noItems": "Belum ada item yang diambil.",
+      "recentItems": "Item Terbaru",
+      "allCategories": "Semua Kategori",
+      "allStatuses": "Semua Status",
+      "statusActive": "Aktif",
+      "statusError": "Kesalahan",
+      "statusPending": "Tertunda",
+      "clearFilters": "Hapus filter",
+      "deleteConfirm": "Hapus blog ini dan semua item yang di-cache?",
+      "created": "Blog berhasil ditambahkan.",
+      "created_synced": "Blog ditambahkan dan disinkronkan. Mengambil %{items} item.",
+      "created_sync_failed": "Blog ditambahkan, tetapi pengambilan awal gagal: %{error}",
+      "updated": "Blog berhasil diperbarui.",
+      "deleted": "Blog berhasil dihapus.",
+      "refreshed": "Blog disegarkan. Menambahkan %{items} item baru.",
+      "form": {
+        "discoverUrl": "URL Website",
+        "discover": "Temukan Feed",
+        "discoverHint": "Masukkan URL website untuk menemukan feed RSS/Atom secara otomatis",
+        "discoverNoUrl": "Silakan masukkan URL website",
+        "discovering": "Menemukan...",
+        "discoveringHint": "Memeriksa feed RSS/Atom...",
+        "discoverFailed": "Gagal menemukan feed",
+        "discoverNoFeeds": "Tidak ada feed ditemukan di website ini",
+        "discoverFoundOne": "Feed ditemukan:",
+        "discoverFoundMultiple": "Beberapa feed ditemukan. Klik salah satu untuk memilih:",
+        "discoverSelected": "Feed yang dipilih:",
+        "feedUrl": "URL Feed",
+        "feedUrlHint": "URL RSS, Atom, atau JSON Feed",
+        "title": "Judul",
+        "titlePlaceholder": "Terdeteksi otomatis dari feed",
+        "titleHint": "Biarkan kosong untuk menggunakan judul feed",
+        "siteUrl": "URL Situs",
+        "siteUrlHint": "Tautan ke halaman beranda blog (opsional)",
+        "category": "Kategori",
+        "categoryHint": "Kelompokkan blog berdasarkan kategori untuk penyaringan dan ekspor OPML",
+        "tags": "Tag",
+        "tagsHint": "Tag yang dipisahkan koma untuk organisasi tambahan",
+        "notes": "Catatan",
+        "notesPlaceholder": "Mengapa Anda mengikuti blog ini...",
+        "notesHint": "Catatan pribadi (tidak ditampilkan secara publik)",
+        "pinned": "Sematkan blog ini (tampilkan di bagian atas daftar)",
+        "hidden": "Sembunyikan dari API publik (hanya terlihat oleh Anda)"
+      }
+    },
+
+    "api": {
+      "title": "Endpoint API",
+      "blogs": "Daftarkan semua blog dengan metadata",
+      "items": "Daftarkan item terbaru dari semua blog",
+      "categories": "Daftarkan semua kategori",
+      "opml": "Ekspor sebagai OPML",
+      "status": "Status sinkronisasi dan statistik"
+    }
+  }
+}

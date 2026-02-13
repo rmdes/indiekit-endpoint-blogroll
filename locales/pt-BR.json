@@ -1,0 +1,133 @@
+{
+  "blogroll": {
+    "title": "Blogroll",
+    "description": "Gerencie suas fontes de blogroll e blogs",
+    "enabled": "Ativado",
+    "disabled": "Desativado",
+    "edit": "Editar",
+    "sync": "Sincronizar",
+    "refresh": "Atualizar",
+    "cancel": "Cancelar",
+    "never": "Nunca",
+
+    "stats": {
+      "title": "Visão geral",
+      "sources": "Fontes",
+      "blogs": "Blogs",
+      "items": "Itens",
+      "errors": "Erros",
+      "lastSync": "Última sincronização"
+    },
+
+    "actions": {
+      "title": "Ações",
+      "syncNow": "Sincronizar tudo agora",
+      "clearResync": "Limpar e ressincronizar",
+      "clearConfirm": "Isso excluirá todos os itens em cache e buscará tudo novamente. Continuar?"
+    },
+
+    "errors": {
+      "title": "Blogs com erros",
+      "seeAll": "Ver todos os %{count} blogs com erros"
+    },
+
+    "sources": {
+      "title": "Sincronização OPML",
+      "manage": "Sincronização OPML",
+      "add": "Adicionar fonte OPML",
+      "new": "Nova fonte OPML",
+      "edit": "Editar fonte OPML",
+      "create": "Criar",
+      "save": "Salvar",
+      "empty": "Nenhuma fonte OPML configurada. Use isto para importar blogs em massa do FreshRSS ou outros leitores de feeds.",
+      "recent": "Fontes OPML",
+      "interval": "A cada %{minutes} min",
+      "lastSync": "Última sincronização",
+      "deleteConfirm": "Excluir esta fonte OPML? Os blogs importados permanecerão.",
+      "created": "Fonte OPML criada com sucesso.",
+      "created_synced": "Fonte OPML criada e sincronizada com sucesso.",
+      "created_sync_failed": "Fonte OPML criada, mas a sincronização falhou: %{error}",
+      "updated": "Fonte OPML atualizada com sucesso.",
+      "deleted": "Fonte OPML excluída com sucesso.",
+      "synced": "Sincronizado com sucesso. Adicionados: %{added}, Atualizados: %{updated}",
+      "form": {
+        "name": "Nome",
+        "type": "Tipo de importação",
+        "typeHint": "URL sincroniza periodicamente, Arquivo é uma importação única",
+        "url": "URL OPML",
+        "urlHint": "URL do seu arquivo OPML (ex., URL de exportação FreshRSS)",
+        "opmlContent": "Conteúdo OPML",
+        "opmlContentHint": "Cole aqui o conteúdo XML OPML completo",
+        "syncInterval": "Intervalo de sincronização",
+        "enabled": "Ativar sincronização automática"
+      }
+    },
+
+    "blogs": {
+      "title": "Blogs",
+      "manage": "Gerenciar blogs",
+      "add": "Adicionar blog",
+      "new": "Novo blog",
+      "edit": "Editar blog",
+      "create": "Adicionar blog",
+      "save": "Salvar blog",
+      "empty": "Ainda não há blogs. Adicione um ou importe de uma fonte OPML.",
+      "recent": "Blogs recentes",
+      "pinned": "Fixado",
+      "hidden": "Oculto",
+      "noItems": "Ainda não foram buscados itens.",
+      "recentItems": "Itens recentes",
+      "allCategories": "Todas as categorias",
+      "allStatuses": "Todos os status",
+      "statusActive": "Ativo",
+      "statusError": "Erro",
+      "statusPending": "Pendente",
+      "clearFilters": "Limpar filtros",
+      "deleteConfirm": "Excluir este blog e todos os seus itens em cache?",
+      "created": "Blog adicionado com sucesso.",
+      "created_synced": "Blog adicionado e sincronizado. Buscados %{items} itens.",
+      "created_sync_failed": "Blog adicionado, mas a busca inicial falhou: %{error}",
+      "updated": "Blog atualizado com sucesso.",
+      "deleted": "Blog excluído com sucesso.",
+      "refreshed": "Blog atualizado. Adicionados %{items} novos itens.",
+      "form": {
+        "discoverUrl": "URL do website",
+        "discover": "Descobrir feed",
+        "discoverHint": "Digite uma URL de website para descobrir automaticamente seu feed RSS/Atom",
+        "discoverNoUrl": "Por favor, digite uma URL de website",
+        "discovering": "Descobrindo...",
+        "discoveringHint": "Verificando feeds RSS/Atom...",
+        "discoverFailed": "Falha ao descobrir feeds",
+        "discoverNoFeeds": "Nenhum feed encontrado neste website",
+        "discoverFoundOne": "Feed encontrado:",
+        "discoverFoundMultiple": "Vários feeds encontrados. Clique em um para selecionar:",
+        "discoverSelected": "Feed selecionado:",
+        "feedUrl": "URL do feed",
+        "feedUrlHint": "URL RSS, Atom ou JSON Feed",
+        "title": "Título",
+        "titlePlaceholder": "Detectado automaticamente do feed",
+        "titleHint": "Deixe em branco para usar o título do feed",
+        "siteUrl": "URL do site",
+        "siteUrlHint": "Link para a página inicial do blog (opcional)",
+        "category": "Categoria",
+        "categoryHint": "Agrupe blogs por categoria para filtragem e exportação OPML",
+        "tags": "Tags",
+        "tagsHint": "Tags separadas por vírgula para organização adicional",
+        "notes": "Notas",
+        "notesPlaceholder": "Por que você segue este blog...",
+        "notesHint": "Notas pessoais (não mostradas publicamente)",
+        "pinned": "Fixar este blog (mostrar no topo das listas)",
+        "hidden": "Ocultar da API pública (visível apenas para você)"
+      }
+    },
+
+    "api": {
+      "title": "Endpoints da API",
+      "blogs": "Listar todos os blogs com metadados",
+      "items": "Listar itens recentes de todos os blogs",
+      "categories": "Listar todas as categorias",
+      "opml": "Exportar como OPML",
+      "status": "Status de sincronização e estatísticas"
+    }
+  }
+}

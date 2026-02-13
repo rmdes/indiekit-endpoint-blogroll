@@ -1,0 +1,133 @@
+{
+  "blogroll": {
+    "title": "Bloggroll",
+    "description": "Hantera dina bloggrollskällor och bloggar",
+    "enabled": "Aktiverad",
+    "disabled": "Inaktiverad",
+    "edit": "Redigera",
+    "sync": "Synkronisera",
+    "refresh": "Uppdatera",
+    "cancel": "Avbryt",
+    "never": "Aldrig",
+
+    "stats": {
+      "title": "Översikt",
+      "sources": "Källor",
+      "blogs": "Bloggar",
+      "items": "Poster",
+      "errors": "Fel",
+      "lastSync": "Senaste synkronisering"
+    },
+
+    "actions": {
+      "title": "Åtgärder",
+      "syncNow": "Synkronisera allt nu",
+      "clearResync": "Rensa och synkronisera om",
+      "clearConfirm": "Detta kommer att ta bort alla cachade poster och hämta allt igen. Fortsätta?"
+    },
+
+    "errors": {
+      "title": "Bloggar med fel",
+      "seeAll": "Se alla %{count} bloggar med fel"
+    },
+
+    "sources": {
+      "title": "OPML-synkronisering",
+      "manage": "OPML-synkronisering",
+      "add": "Lägg till OPML-källa",
+      "new": "Ny OPML-källa",
+      "edit": "Redigera OPML-källa",
+      "create": "Skapa",
+      "save": "Spara",
+      "empty": "Inga OPML-källor konfigurerade. Använd detta för att massimportera bloggar från FreshRSS eller andra flödesläsare.",
+      "recent": "OPML-källor",
+      "interval": "Varje %{minutes} min",
+      "lastSync": "Senast synkroniserad",
+      "deleteConfirm": "Ta bort denna OPML-källa? Bloggar importerade från den kommer att finnas kvar.",
+      "created": "OPML-källa skapad.",
+      "created_synced": "OPML-källa skapad och synkroniserad.",
+      "created_sync_failed": "OPML-källa skapad, men synkronisering misslyckades: %{error}",
+      "updated": "OPML-källa uppdaterad.",
+      "deleted": "OPML-källa borttagen.",
+      "synced": "Synkronisering lyckades. Tillagda: %{added}, Uppdaterade: %{updated}",
+      "form": {
+        "name": "Namn",
+        "type": "Importtyp",
+        "typeHint": "URL synkroniserar periodiskt, Fil är en engångsimport",
+        "url": "OPML-URL",
+        "urlHint": "URL till din OPML-fil (t.ex. FreshRSS export-URL)",
+        "opmlContent": "OPML-innehåll",
+        "opmlContentHint": "Klistra in det fullständiga OPML XML-innehållet här",
+        "syncInterval": "Synkroniseringsintervall",
+        "enabled": "Aktivera automatisk synkronisering"
+      }
+    },
+
+    "blogs": {
+      "title": "Bloggar",
+      "manage": "Hantera bloggar",
+      "add": "Lägg till blogg",
+      "new": "Ny blogg",
+      "edit": "Redigera blogg",
+      "create": "Lägg till blogg",
+      "save": "Spara blogg",
+      "empty": "Inga bloggar ännu. Lägg till en eller importera från en OPML-källa.",
+      "recent": "Senaste bloggarna",
+      "pinned": "Fäst",
+      "hidden": "Dold",
+      "noItems": "Inga poster hämtade ännu.",
+      "recentItems": "Senaste poster",
+      "allCategories": "Alla kategorier",
+      "allStatuses": "Alla statusar",
+      "statusActive": "Aktiv",
+      "statusError": "Fel",
+      "statusPending": "Väntande",
+      "clearFilters": "Rensa filter",
+      "deleteConfirm": "Ta bort denna blogg och alla dess cachade poster?",
+      "created": "Blogg tillagd.",
+      "created_synced": "Blogg tillagd och synkroniserad. Hämtade %{items} poster.",
+      "created_sync_failed": "Blogg tillagd, men initial hämtning misslyckades: %{error}",
+      "updated": "Blogg uppdaterad.",
+      "deleted": "Blogg borttagen.",
+      "refreshed": "Blogg uppdaterad. Lade till %{items} nya poster.",
+      "form": {
+        "discoverUrl": "Webbplats-URL",
+        "discover": "Upptäck flöde",
+        "discoverHint": "Ange en webbplats-URL för att automatiskt upptäcka dess RSS/Atom-flöde",
+        "discoverNoUrl": "Vänligen ange en webbplats-URL",
+        "discovering": "Upptäcker...",
+        "discoveringHint": "Söker efter RSS/Atom-flöden...",
+        "discoverFailed": "Kunde inte upptäcka flöden",
+        "discoverNoFeeds": "Inga flöden hittades på denna webbplats",
+        "discoverFoundOne": "Flöde hittat:",
+        "discoverFoundMultiple": "Flera flöden hittades. Klicka på ett för att välja:",
+        "discoverSelected": "Valt flöde:",
+        "feedUrl": "Flödes-URL",
+        "feedUrlHint": "RSS-, Atom- eller JSON Feed-URL",
+        "title": "Titel",
+        "titlePlaceholder": "Automatiskt upptäckt från flöde",
+        "titleHint": "Lämna tomt för att använda flödets titel",
+        "siteUrl": "Webbplats-URL",
+        "siteUrlHint": "Länk till bloggens startsida (valfritt)",
+        "category": "Kategori",
+        "categoryHint": "Gruppera bloggar efter kategori för filtrering och OPML-export",
+        "tags": "Taggar",
+        "tagsHint": "Kommaseparerade taggar för ytterligare organisation",
+        "notes": "Anteckningar",
+        "notesPlaceholder": "Varför du följer denna blogg...",
+        "notesHint": "Personliga anteckningar (visas inte offentligt)",
+        "pinned": "Fäst denna blogg (visa högst upp i listor)",
+        "hidden": "Dölj från offentligt API (synlig endast för dig)"
+      }
+    },
+
+    "api": {
+      "title": "API-slutpunkter",
+      "blogs": "Lista alla bloggar med metadata",
+      "items": "Lista senaste poster från alla bloggar",
+      "categories": "Lista alla kategorier",
+      "opml": "Exportera som OPML",
+      "status": "Synkroniseringsstatus och statistik"
+    }
+  }
+}

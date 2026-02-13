@@ -1,0 +1,133 @@
+{
+  "blogroll": {
+    "title": "Blogroll",
+    "description": "Beheer je blogroll-bronnen en blogs",
+    "enabled": "Ingeschakeld",
+    "disabled": "Uitgeschakeld",
+    "edit": "Bewerken",
+    "sync": "Synchroniseren",
+    "refresh": "Vernieuwen",
+    "cancel": "Annuleren",
+    "never": "Nooit",
+
+    "stats": {
+      "title": "Overzicht",
+      "sources": "Bronnen",
+      "blogs": "Blogs",
+      "items": "Items",
+      "errors": "Fouten",
+      "lastSync": "Laatste synchronisatie"
+    },
+
+    "actions": {
+      "title": "Acties",
+      "syncNow": "Nu alles synchroniseren",
+      "clearResync": "Wissen en opnieuw synchroniseren",
+      "clearConfirm": "Dit verwijdert alle gecachte items en haalt alles opnieuw op. Doorgaan?"
+    },
+
+    "errors": {
+      "title": "Blogs met fouten",
+      "seeAll": "Bekijk alle %{count} blogs met fouten"
+    },
+
+    "sources": {
+      "title": "OPML-synchronisatie",
+      "manage": "OPML-synchronisatie",
+      "add": "OPML-bron toevoegen",
+      "new": "Nieuwe OPML-bron",
+      "edit": "OPML-bron bewerken",
+      "create": "Aanmaken",
+      "save": "Opslaan",
+      "empty": "Geen OPML-bronnen geconfigureerd. Gebruik dit om blogs in bulk te importeren uit FreshRSS of andere feedlezers.",
+      "recent": "OPML-bronnen",
+      "interval": "Elke %{minutes} min",
+      "lastSync": "Laatst gesynchroniseerd",
+      "deleteConfirm": "Deze OPML-bron verwijderen? Geïmporteerde blogs blijven behouden.",
+      "created": "OPML-bron succesvol aangemaakt.",
+      "created_synced": "OPML-bron succesvol aangemaakt en gesynchroniseerd.",
+      "created_sync_failed": "OPML-bron aangemaakt, maar synchronisatie mislukt: %{error}",
+      "updated": "OPML-bron succesvol bijgewerkt.",
+      "deleted": "OPML-bron succesvol verwijderd.",
+      "synced": "Succesvol gesynchroniseerd. Toegevoegd: %{added}, Bijgewerkt: %{updated}",
+      "form": {
+        "name": "Naam",
+        "type": "Importtype",
+        "typeHint": "URL synchroniseert periodiek, Bestand is een eenmalige import",
+        "url": "OPML-URL",
+        "urlHint": "URL naar je OPML-bestand (bijv. FreshRSS export-URL)",
+        "opmlContent": "OPML-inhoud",
+        "opmlContentHint": "Plak hier de volledige OPML XML-inhoud",
+        "syncInterval": "Synchronisatie-interval",
+        "enabled": "Automatische synchronisatie inschakelen"
+      }
+    },
+
+    "blogs": {
+      "title": "Blogs",
+      "manage": "Blogs beheren",
+      "add": "Blog toevoegen",
+      "new": "Nieuwe blog",
+      "edit": "Blog bewerken",
+      "create": "Blog toevoegen",
+      "save": "Blog opslaan",
+      "empty": "Nog geen blogs. Voeg er een toe of importeer vanuit een OPML-bron.",
+      "recent": "Recente blogs",
+      "pinned": "Vastgepind",
+      "hidden": "Verborgen",
+      "noItems": "Nog geen items opgehaald.",
+      "recentItems": "Recente items",
+      "allCategories": "Alle categorieën",
+      "allStatuses": "Alle statussen",
+      "statusActive": "Actief",
+      "statusError": "Fout",
+      "statusPending": "In behandeling",
+      "clearFilters": "Filters wissen",
+      "deleteConfirm": "Deze blog en alle gecachte items verwijderen?",
+      "created": "Blog succesvol toegevoegd.",
+      "created_synced": "Blog toegevoegd en gesynchroniseerd. %{items} items opgehaald.",
+      "created_sync_failed": "Blog toegevoegd, maar initiële ophaling mislukt: %{error}",
+      "updated": "Blog succesvol bijgewerkt.",
+      "deleted": "Blog succesvol verwijderd.",
+      "refreshed": "Blog vernieuwd. %{items} nieuwe items toegevoegd.",
+      "form": {
+        "discoverUrl": "Website-URL",
+        "discover": "Feed ontdekken",
+        "discoverHint": "Voer een website-URL in om automatisch de RSS/Atom-feed te ontdekken",
+        "discoverNoUrl": "Voer een website-URL in",
+        "discovering": "Aan het ontdekken...",
+        "discoveringHint": "Controleren op RSS/Atom-feeds...",
+        "discoverFailed": "Kan feeds niet ontdekken",
+        "discoverNoFeeds": "Geen feeds gevonden op deze website",
+        "discoverFoundOne": "Feed gevonden:",
+        "discoverFoundMultiple": "Meerdere feeds gevonden. Klik op een feed om te selecteren:",
+        "discoverSelected": "Geselecteerde feed:",
+        "feedUrl": "Feed-URL",
+        "feedUrlHint": "RSS-, Atom- of JSON Feed-URL",
+        "title": "Titel",
+        "titlePlaceholder": "Automatisch gedetecteerd uit feed",
+        "titleHint": "Laat leeg om de feed-titel te gebruiken",
+        "siteUrl": "Site-URL",
+        "siteUrlHint": "Link naar de homepage van de blog (optioneel)",
+        "category": "Categorie",
+        "categoryHint": "Groepeer blogs op categorie voor filteren en OPML-export",
+        "tags": "Tags",
+        "tagsHint": "Door komma's gescheiden tags voor extra organisatie",
+        "notes": "Notities",
+        "notesPlaceholder": "Waarom je deze blog volgt...",
+        "notesHint": "Persoonlijke notities (niet openbaar getoond)",
+        "pinned": "Deze blog vastpinnen (bovenaan lijsten tonen)",
+        "hidden": "Verbergen voor openbare API (alleen zichtbaar voor jou)"
+      }
+    },
+
+    "api": {
+      "title": "API-endpoints",
+      "blogs": "Alle blogs met metadata weergeven",
+      "items": "Recente items van alle blogs weergeven",
+      "categories": "Alle categorieën weergeven",
+      "opml": "Exporteren als OPML",
+      "status": "Synchronisatiestatus en statistieken"
+    }
+  }
+}
