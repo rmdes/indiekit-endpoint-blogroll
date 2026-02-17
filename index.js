@@ -93,6 +93,9 @@ export default class BlogrollEndpoint {
     protectedRouter.post("/api/microsub-webhook", apiController.microsubWebhook);
     protectedRouter.get("/api/microsub-status", apiController.microsubStatus);
 
+    // FeedLand integration (protected - category discovery)
+    protectedRouter.get("/api/feedland-categories", sourcesController.feedlandCategories);
+
     return protectedRouter;
   }
 

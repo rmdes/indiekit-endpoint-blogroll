@@ -15,6 +15,7 @@
         {% if microsubAvailable %}
         <option value="microsub" {% if source.type == 'microsub' %}selected{% endif %}>Microsub Subscriptions</option>
         {% endif %}
+        <option value="feedland" {% if source.type == 'feedland' %}selected{% endif %}>FeedLand</option>
       </select>
       <span class="hint">{{ __("blogroll.sources.form.typeHint") }}</span>
     </div>
@@ -48,6 +49,32 @@
       <span class="hint">{{ __("blogroll.sources.form.categoryPrefixHint") | default("Optional prefix for blog categories (e.g., 'Following: ')") }}</span>
     </div>
 
+    <div class="blogroll-field" id="feedlandInstanceField" style="display: none;">
+      <label class="label" for="feedlandInstance">{{ __("blogroll.sources.form.feedlandInstance") | default("FeedLand Instance URL") }}</label>
+      <input class="input" type="url" id="feedlandInstance" name="feedlandInstance" value="{{ source.feedlandInstance if source else 'https://feedland.com' }}" placeholder="https://feedland.com">
+      <span class="hint">{{ __("blogroll.sources.form.feedlandInstanceHint") | default("FeedLand instance URL (feedland.com or self-hosted)") }}</span>
+    </div>
+
+    <div class="blogroll-field" id="feedlandUsernameField" style="display: none;">
+      <label class="label" for="feedlandUsername">{{ __("blogroll.sources.form.feedlandUsername") | default("FeedLand Username") }}</label>
+      <input class="input" type="text" id="feedlandUsername" name="feedlandUsername" value="{{ source.feedlandUsername if source else '' }}" placeholder="e.g., davewiner">
+      <span class="hint">{{ __("blogroll.sources.form.feedlandUsernameHint") | default("Your FeedLand screen name") }}</span>
+    </div>
+
+    <div class="blogroll-field" id="feedlandCategoryField" style="display: none;">
+      <label class="label" for="feedlandCategory">{{ __("blogroll.sources.form.feedlandCategory") | default("FeedLand Category") }}</label>
+      <div style="display: flex; gap: 0.5rem; align-items: flex-start;">
+        <select class="select" id="feedlandCategory" name="feedlandCategory" style="flex: 1;">
+          <option value="">{{ __("blogroll.sources.form.feedlandCategoryAll") | default("All subscriptions") }}</option>
+          {% if source.feedlandCategory %}
+          <option value="{{ source.feedlandCategory }}" selected>{{ source.feedlandCategory }}</option>
+          {% endif %}
+        </select>
+        <button type="button" class="button button--secondary" onclick="loadFeedlandCategories()" id="feedlandLoadBtn">{{ __("blogroll.sources.form.feedlandLoadCategories") | default("Load") }}</button>
+      </div>
+      <span class="hint" id="feedlandCategoryHint">{{ __("blogroll.sources.form.feedlandCategoryHint") | default("Optional: sync only feeds from a specific category") }}</span>
+    </div>
+
     <div class="blogroll-field">
       <label class="label" for="syncInterval">{{ __("blogroll.sources.form.syncInterval") }}</label>
       <select class="select" id="syncInterval" name="syncInterval">
@@ -78,12 +105,18 @@ function toggleTypeFields() {
   const opmlContentField = document.getElementById('opmlContentField');
   const microsubChannelField = document.getElementById('microsubChannelField');
   const categoryPrefixField = document.getElementById('categoryPrefixField');
+  const feedlandInstanceField = document.getElementById('feedlandInstanceField');
+  const feedlandUsernameField = document.getElementById('feedlandUsernameField');
+  const feedlandCategoryField = document.getElementById('feedlandCategoryField');
 
   // Hide all type-specific fields first
   urlField.style.display = 'none';
   opmlContentField.style.display = 'none';
   if (microsubChannelField) microsubChannelField.style.display = 'none';
   if (categoryPrefixField) categoryPrefixField.style.display = 'none';
+  if (feedlandInstanceField) feedlandInstanceField.style.display = 'none';
+  if (feedlandUsernameField) feedlandUsernameField.style.display = 'none';
+  if (feedlandCategoryField) feedlandCategoryField.style.display = 'none';
 
   // Show fields based on type
   if (type === 'opml_url') {
@@ -93,7 +126,66 @@ function toggleTypeFields() {
   } else if (type === 'microsub') {
     if (microsubChannelField) microsubChannelField.style.display = 'flex';
     if (categoryPrefixField) categoryPrefixField.style.display = 'flex';
+  } else if (type === 'feedland') {
+    if (feedlandInstanceField) feedlandInstanceField.style.display = 'flex';
+    if (feedlandUsernameField) feedlandUsernameField.style.display = 'flex';
+    if (feedlandCategoryField) feedlandCategoryField.style.display = 'flex';
   }
+}
+
+function loadFeedlandCategories() {
+  const instance = document.getElementById('feedlandInstance').value;
+  const username = document.getElementById('feedlandUsername').value;
+  const select = document.getElementById('feedlandCategory');
+  const btn = document.getElementById('feedlandLoadBtn');
+  const hint = document.getElementById('feedlandCategoryHint');
+  const currentValue = select.value;
+
+  if (!instance || !username) {
+    hint.textContent = 'Please enter instance URL and username first';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '...';
+  hint.textContent = 'Loading categories...';
+
+  const baseUrl = '{{ baseUrl }}';
+  const url = baseUrl + '/api/feedland-categories?instance=' + encodeURIComponent(instance) + '&username=' + encodeURIComponent(username);
+
+  fetch(url, { credentials: 'same-origin' })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.error) {
+        hint.textContent = 'Error: ' + data.error;
+        return;
+      }
+
+      // Clear existing options and rebuild safely using DOM methods
+      while (select.options.length > 0) select.remove(0);
+      var allOpt = document.createElement('option');
+      allOpt.value = '';
+      allOpt.textContent = '{{ __("blogroll.sources.form.feedlandCategoryAll") | default("All subscriptions") }}';
+      select.appendChild(allOpt);
+
+      var cats = data.categories || [];
+      cats.forEach(function(cat) {
+        var opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        if (cat === currentValue) opt.selected = true;
+        select.appendChild(opt);
+      });
+
+      hint.textContent = cats.length + ' categories found' + (data.screenname ? ' for ' + data.screenname : '');
+    })
+    .catch(function(err) {
+      hint.textContent = 'Failed to load: ' + err.message;
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = '{{ __("blogroll.sources.form.feedlandLoadCategories") | default("Load") }}';
+    });
 }
 
 // Initialize on load

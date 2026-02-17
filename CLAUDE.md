@@ -5,8 +5,9 @@
 `@rmdes/indiekit-endpoint-blogroll` is an Indiekit plugin that provides a comprehensive blogroll management system. It aggregates blog feeds from multiple sources (OPML files/URLs, Microsub subscriptions), fetches and caches recent items, and exposes both an admin UI and public JSON API.
 
 **Key Capabilities:**
-- Aggregates blogs from OPML (URL or file), JSON feeds, or manual entry
+- Aggregates blogs from OPML (URL or file), JSON feeds, FeedLand, or manual entry
 - Integrates with Microsub plugin to mirror subscriptions
+- FeedLand integration (feedland.com or self-hosted) with category discovery
 - Background feed fetching with configurable intervals
 - Admin UI for managing sources, blogs, and viewing recent items
 - Public read-only JSON API for frontend integration
@@ -21,13 +22,13 @@
 ### Data Flow
 
 ```
-Sources (OPML/Microsub) → Blogs → Items
+Sources (OPML/Microsub/FeedLand) → Blogs → Items
          ↓                   ↓        ↓
     blogrollSources    blogrollBlogs  blogrollItems
                                       microsub_items (reference)
 ```
 
-1. **Sources** define where blogs come from (OPML URL, OPML file, Microsub channels)
+1. **Sources** define where blogs come from (OPML URL, OPML file, Microsub channels, FeedLand)
 2. **Blogs** are individual feed subscriptions with metadata
 3. **Items** are recent posts/articles from blogs (cached for 7 days by default)
 
@@ -42,13 +43,17 @@ Sources (OPML/Microsub) → Blogs → Items
 ```javascript
 {
   _id: ObjectId,
-  type: "opml_url" | "opml_file" | "manual" | "json_feed" | "microsub",
+  type: "opml_url" | "opml_file" | "manual" | "json_feed" | "microsub" | "feedland",
   name: String,           // Display name
   url: String | null,     // For opml_url, json_feed
   opmlContent: String | null,  // For opml_file
   // Microsub-specific
   channelFilter: String | null,  // Specific channel UID or null for all
   categoryPrefix: String,        // Prefix for blog categories
+  // FeedLand-specific
+  feedlandInstance: String | null,  // e.g., "https://feedland.com"
+  feedlandUsername: String | null,  // FeedLand screen name
+  feedlandCategory: String | null,  // Category filter (or null for all)
   enabled: Boolean,
   syncInterval: Number,   // Minutes between syncs
   lastSyncAt: String | null,     // ISO 8601
@@ -141,6 +146,7 @@ Sources (OPML/Microsub) → Blogs → Items
 - **lib/sync/scheduler.js** - Background sync, interval management
 - **lib/sync/opml.js** - OPML parsing, fetch from URL, export
 - **lib/sync/microsub.js** - Microsub channel/feed sync, webhook handler
+- **lib/sync/feedland.js** - FeedLand sync, category discovery, OPML URL builder
 - **lib/sync/feed.js** - RSS/Atom/JSON Feed parsing, item fetching
 
 ### Utilities
