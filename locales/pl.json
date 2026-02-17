@@ -26,7 +26,7 @@
       "clearConfirm": "Spowoduje to usunięcie wszystkich elementów w pamięci podręcznej i ponowne pobranie wszystkiego. Kontynuować?"
     },
 
-    "sync": {
+    "syncResult": {
       "success": "Synced {{blogs}} blogs, added {{items}} items.",
       "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",

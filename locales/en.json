@@ -26,7 +26,7 @@
       "clearConfirm": "This will delete all cached items and re-fetch everything. Continue?"
     },
 
-    "sync": {
+    "syncResult": {
       "success": "Synced {{blogs}} blogs, added {{items}} items.",
       "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",

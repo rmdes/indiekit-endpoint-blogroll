@@ -26,7 +26,7 @@
       "clearConfirm": "इससे सभी कैश किए गए आइटम हटा दिए जाएंगे और सब कुछ फिर से प्राप्त किया जाएगा। जारी रखें?"
     },
 
-    "sync": {
+    "syncResult": {
       "success": "Synced {{blogs}} blogs, added {{items}} items.",
       "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",

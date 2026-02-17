@@ -26,7 +26,7 @@
       "clearConfirm": "Detta kommer att ta bort alla cachade poster och hämta allt igen. Fortsätta?"
     },
 
-    "sync": {
+    "syncResult": {
       "success": "Synced {{blogs}} blogs, added {{items}} items.",
       "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
