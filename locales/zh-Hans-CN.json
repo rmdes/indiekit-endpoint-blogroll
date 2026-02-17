@@ -26,6 +26,13 @@
       "clearConfirm": "这将删除所有缓存的条目并重新获取所有内容。继续吗?"
     },
 
+    "sync": {
+      "success": "Synced %{blogs} blogs, added %{items} items.",
+      "error": "Sync failed: %{error}",
+      "already_running": "A sync is already in progress.",
+      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+    },
+
     "errors": {
       "title": "有错误的博客",
       "seeAll": "查看所有 %{count} 个有错误的博客"
@@ -59,7 +66,11 @@
         "opmlContent": "OPML 内容",
         "opmlContentHint": "在此粘贴完整的 OPML XML 内容",
         "syncInterval": "同步间隔",
-        "enabled": "启用自动同步"
+        "enabled": "启用自动同步",
+        "microsubChannel": "Microsub Channel",
+        "microsubChannelHint": "Sync feeds from a specific channel, or all channels",
+        "categoryPrefix": "Category Prefix",
+        "categoryPrefixHint": "Optional prefix for blog categories (e.g., 'Following: ')"
       }
     },
 

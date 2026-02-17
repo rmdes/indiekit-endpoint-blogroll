@@ -26,6 +26,13 @@
       "clearConfirm": "Dit verwijdert alle gecachte items en haalt alles opnieuw op. Doorgaan?"
     },
 
+    "sync": {
+      "success": "Synced %{blogs} blogs, added %{items} items.",
+      "error": "Sync failed: %{error}",
+      "already_running": "A sync is already in progress.",
+      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+    },
+
     "errors": {
       "title": "Blogs met fouten",
       "seeAll": "Bekijk alle %{count} blogs met fouten"
@@ -59,7 +66,11 @@
         "opmlContent": "OPML-inhoud",
         "opmlContentHint": "Plak hier de volledige OPML XML-inhoud",
         "syncInterval": "Synchronisatie-interval",
-        "enabled": "Automatische synchronisatie inschakelen"
+        "enabled": "Automatische synchronisatie inschakelen",
+        "microsubChannel": "Microsub Channel",
+        "microsubChannelHint": "Sync feeds from a specific channel, or all channels",
+        "categoryPrefix": "Category Prefix",
+        "categoryPrefixHint": "Optional prefix for blog categories (e.g., 'Following: ')"
       }
     },
 

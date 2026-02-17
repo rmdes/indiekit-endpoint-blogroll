@@ -26,6 +26,13 @@
       "clearConfirm": "Esto eliminará todas las entradas almacenadas en caché y volverá a descargar todo. ¿Continuar?"
     },
 
+    "sync": {
+      "success": "Synced %{blogs} blogs, added %{items} items.",
+      "error": "Sync failed: %{error}",
+      "already_running": "A sync is already in progress.",
+      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+    },
+
     "errors": {
       "title": "Blogs con errores",
       "seeAll": "Ver los %{count} blogs con errores"
@@ -59,7 +66,11 @@
         "opmlContent": "Contenido OPML",
         "opmlContentHint": "Pega aquí el contenido XML OPML completo",
         "syncInterval": "Intervalo de sincronización",
-        "enabled": "Habilitar sincronización automática"
+        "enabled": "Habilitar sincronización automática",
+        "microsubChannel": "Microsub Channel",
+        "microsubChannelHint": "Sync feeds from a specific channel, or all channels",
+        "categoryPrefix": "Category Prefix",
+        "categoryPrefixHint": "Optional prefix for blog categories (e.g., 'Following: ')"
       }
     },
 
