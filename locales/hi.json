@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "त्रुटियों वाले ब्लॉग",
-      "seeAll": "त्रुटियों वाले सभी %{count} ब्लॉग देखें"
+      "seeAll": "त्रुटियों वाले सभी {{count}} ब्लॉग देखें"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "सहेजें",
       "empty": "कोई OPML स्रोत कॉन्फ़िगर नहीं किया गया। FreshRSS या अन्य फ़ीड रीडर्स से ब्लॉग बल्क-इम्पोर्ट करने के लिए इसका उपयोग करें।",
       "recent": "OPML स्रोत",
-      "interval": "हर %{minutes} मिनट",
+      "interval": "हर {{minutes}} मिनट",
       "lastSync": "अंतिम बार सिंक किया गया",
       "deleteConfirm": "इस OPML स्रोत को हटाएं? इससे इम्पोर्ट किए गए ब्लॉग बने रहेंगे।",
       "created": "OPML स्रोत सफलतापूर्वक बनाया गया।",
       "created_synced": "OPML स्रोत सफलतापूर्वक बनाया और सिंक किया गया।",
-      "created_sync_failed": "OPML स्रोत बनाया गया, लेकिन सिंक विफल रहा: %{error}",
+      "created_sync_failed": "OPML स्रोत बनाया गया, लेकिन सिंक विफल रहा: {{error}}",
       "updated": "OPML स्रोत सफलतापूर्वक अपडेट किया गया।",
       "deleted": "OPML स्रोत सफलतापूर्वक हटाया गया।",
-      "synced": "सफलतापूर्वक सिंक किया गया। जोड़े गए: %{added}, अपडेट किए गए: %{updated}",
+      "synced": "सफलतापूर्वक सिंक किया गया। जोड़े गए: {{added}}, अपडेट किए गए: {{updated}}",
       "form": {
         "name": "नाम",
         "type": "इम्पोर्ट प्रकार",
@@ -96,11 +96,11 @@
       "clearFilters": "फ़िल्टर साफ़ करें",
       "deleteConfirm": "इस ब्लॉग और इसके सभी कैश किए गए आइटम हटाएं?",
       "created": "ब्लॉग सफलतापूर्वक जोड़ा गया।",
-      "created_synced": "ब्लॉग जोड़ा और सिंक किया गया। %{items} आइटम प्राप्त किए गए।",
-      "created_sync_failed": "ब्लॉग जोड़ा गया, लेकिन प्रारंभिक प्राप्ति विफल रही: %{error}",
+      "created_synced": "ब्लॉग जोड़ा और सिंक किया गया। {{items}} आइटम प्राप्त किए गए।",
+      "created_sync_failed": "ब्लॉग जोड़ा गया, लेकिन प्रारंभिक प्राप्ति विफल रही: {{error}}",
       "updated": "ब्लॉग सफलतापूर्वक अपडेट किया गया।",
       "deleted": "ब्लॉग सफलतापूर्वक हटाया गया।",
-      "refreshed": "ब्लॉग ताज़ा किया गया। %{items} नए आइटम जोड़े गए।",
+      "refreshed": "ब्लॉग ताज़ा किया गया। {{items}} नए आइटम जोड़े गए।",
       "form": {
         "discoverUrl": "वेबसाइट URL",
         "discover": "फ़ीड खोजें",

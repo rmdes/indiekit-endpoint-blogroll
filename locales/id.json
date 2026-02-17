@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Blog dengan Kesalahan",
-      "seeAll": "Lihat semua %{count} blog dengan kesalahan"
+      "seeAll": "Lihat semua {{count}} blog dengan kesalahan"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Simpan",
       "empty": "Tidak ada sumber OPML yang dikonfigurasi. Gunakan ini untuk mengimpor blog secara massal dari FreshRSS atau pembaca feed lainnya.",
       "recent": "Sumber OPML",
-      "interval": "Setiap %{minutes} mnt",
+      "interval": "Setiap {{minutes}} mnt",
       "lastSync": "Terakhir disinkronkan",
       "deleteConfirm": "Hapus sumber OPML ini? Blog yang diimpor darinya akan tetap ada.",
       "created": "Sumber OPML berhasil dibuat.",
       "created_synced": "Sumber OPML berhasil dibuat dan disinkronkan.",
-      "created_sync_failed": "Sumber OPML dibuat, tetapi sinkronisasi gagal: %{error}",
+      "created_sync_failed": "Sumber OPML dibuat, tetapi sinkronisasi gagal: {{error}}",
       "updated": "Sumber OPML berhasil diperbarui.",
       "deleted": "Sumber OPML berhasil dihapus.",
-      "synced": "Berhasil disinkronkan. Ditambahkan: %{added}, Diperbarui: %{updated}",
+      "synced": "Berhasil disinkronkan. Ditambahkan: {{added}}, Diperbarui: {{updated}}",
       "form": {
         "name": "Nama",
         "type": "Jenis Impor",
@@ -96,11 +96,11 @@
       "clearFilters": "Hapus filter",
       "deleteConfirm": "Hapus blog ini dan semua item yang di-cache?",
       "created": "Blog berhasil ditambahkan.",
-      "created_synced": "Blog ditambahkan dan disinkronkan. Mengambil %{items} item.",
-      "created_sync_failed": "Blog ditambahkan, tetapi pengambilan awal gagal: %{error}",
+      "created_synced": "Blog ditambahkan dan disinkronkan. Mengambil {{items}} item.",
+      "created_sync_failed": "Blog ditambahkan, tetapi pengambilan awal gagal: {{error}}",
       "updated": "Blog berhasil diperbarui.",
       "deleted": "Blog berhasil dihapus.",
-      "refreshed": "Blog disegarkan. Menambahkan %{items} item baru.",
+      "refreshed": "Blog disegarkan. Menambahkan {{items}} item baru.",
       "form": {
         "discoverUrl": "URL Website",
         "discover": "Temukan Feed",

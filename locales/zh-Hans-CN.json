@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "有错误的博客",
-      "seeAll": "查看所有 %{count} 个有错误的博客"
+      "seeAll": "查看所有 {{count}} 个有错误的博客"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "保存",
       "empty": "未配置 OPML 源。使用此功能从 FreshRSS 或其他订阅阅读器批量导入博客。",
       "recent": "OPML 源",
-      "interval": "每 %{minutes} 分钟",
+      "interval": "每 {{minutes}} 分钟",
       "lastSync": "最后同步",
       "deleteConfirm": "删除此 OPML 源?从中导入的博客将保留。",
       "created": "OPML 源创建成功。",
       "created_synced": "OPML 源创建并同步成功。",
-      "created_sync_failed": "OPML 源已创建,但同步失败:%{error}",
+      "created_sync_failed": "OPML 源已创建,但同步失败:{{error}}",
       "updated": "OPML 源更新成功。",
       "deleted": "OPML 源删除成功。",
-      "synced": "同步成功。已添加:%{added},已更新:%{updated}",
+      "synced": "同步成功。已添加:{{added}},已更新:{{updated}}",
       "form": {
         "name": "名称",
         "type": "导入类型",
@@ -96,11 +96,11 @@
       "clearFilters": "清除筛选",
       "deleteConfirm": "删除此博客及其所有缓存条目?",
       "created": "博客添加成功。",
-      "created_synced": "博客已添加并同步。获取了 %{items} 个条目。",
-      "created_sync_failed": "博客已添加,但初始获取失败:%{error}",
+      "created_synced": "博客已添加并同步。获取了 {{items}} 个条目。",
+      "created_sync_failed": "博客已添加,但初始获取失败:{{error}}",
       "updated": "博客更新成功。",
       "deleted": "博客删除成功。",
-      "refreshed": "博客已刷新。添加了 %{items} 个新条目。",
+      "refreshed": "博客已刷新。添加了 {{items}} 个新条目。",
       "form": {
         "discoverUrl": "网站 URL",
         "discover": "发现订阅源",

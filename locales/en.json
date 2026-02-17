@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Blogs with Errors",
-      "seeAll": "See all %{count} blogs with errors"
+      "seeAll": "See all {{count}} blogs with errors"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Save",
       "empty": "No OPML sources configured. Use this to bulk-import blogs from FreshRSS or other feed readers.",
       "recent": "OPML Sources",
-      "interval": "Every %{minutes} min",
+      "interval": "Every {{minutes}} min",
       "lastSync": "Last synced",
       "deleteConfirm": "Delete this OPML source? Blogs imported from it will remain.",
       "created": "OPML source created successfully.",
       "created_synced": "OPML source created and synced successfully.",
-      "created_sync_failed": "OPML source created, but sync failed: %{error}",
+      "created_sync_failed": "OPML source created, but sync failed: {{error}}",
       "updated": "OPML source updated successfully.",
       "deleted": "OPML source deleted successfully.",
-      "synced": "Synced successfully. Added: %{added}, Updated: %{updated}",
+      "synced": "Synced successfully. Added: {{added}}, Updated: {{updated}}",
       "form": {
         "name": "Name",
         "type": "Import Type",
@@ -96,11 +96,11 @@
       "clearFilters": "Clear filters",
       "deleteConfirm": "Delete this blog and all its cached items?",
       "created": "Blog added successfully.",
-      "created_synced": "Blog added and synced. Fetched %{items} items.",
-      "created_sync_failed": "Blog added, but initial fetch failed: %{error}",
+      "created_synced": "Blog added and synced. Fetched {{items}} items.",
+      "created_sync_failed": "Blog added, but initial fetch failed: {{error}}",
       "updated": "Blog updated successfully.",
       "deleted": "Blog deleted successfully.",
-      "refreshed": "Blog refreshed. Added %{items} new items.",
+      "refreshed": "Blog refreshed. Added {{items}} new items.",
       "form": {
         "discoverUrl": "Website URL",
         "discover": "Discover Feed",

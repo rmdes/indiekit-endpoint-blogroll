@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Блогови са грешкама",
-      "seeAll": "Погледај свих %{count} блогова са грешкама"
+      "seeAll": "Погледај свих {{count}} блогова са грешкама"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Сачувај",
       "empty": "Нема конфигурисаних OPML извора. Користите ово за масовни увоз блогова из FreshRSS или других читача довода.",
       "recent": "OPML извори",
-      "interval": "Сваких %{minutes} мин",
+      "interval": "Сваких {{minutes}} мин",
       "lastSync": "Последња синхронизација",
       "deleteConfirm": "Обрисати овај OPML извор? Блогови увезени из њега ће остати.",
       "created": "OPML извор успешно креиран.",
       "created_synced": "OPML извор успешно креиран и синхронизован.",
-      "created_sync_failed": "OPML извор креиран, али синхронизација није успела: %{error}",
+      "created_sync_failed": "OPML извор креиран, али синхронизација није успела: {{error}}",
       "updated": "OPML извор успешно ажуриран.",
       "deleted": "OPML извор успешно обрисан.",
-      "synced": "Успешно синхронизовано. Додато: %{added}, Ажурирано: %{updated}",
+      "synced": "Успешно синхронизовано. Додато: {{added}}, Ажурирано: {{updated}}",
       "form": {
         "name": "Назив",
         "type": "Тип увоза",
@@ -96,11 +96,11 @@
       "clearFilters": "Обриши филтере",
       "deleteConfirm": "Обрисати овај блог и све његове кеширане ставке?",
       "created": "Блог успешно додат.",
-      "created_synced": "Блог додат и синхронизован. Преузето %{items} ставки.",
-      "created_sync_failed": "Блог додат, али почетно преузимање није успело: %{error}",
+      "created_synced": "Блог додат и синхронизован. Преузето {{items}} ставки.",
+      "created_sync_failed": "Блог додат, али почетно преузимање није успело: {{error}}",
       "updated": "Блог успешно ажуриран.",
       "deleted": "Блог успешно обрисан.",
-      "refreshed": "Блог освежен. Додато %{items} нових ставки.",
+      "refreshed": "Блог освежен. Додато {{items}} нових ставки.",
       "form": {
         "discoverUrl": "URL веб-сајта",
         "discover": "Открий довод",

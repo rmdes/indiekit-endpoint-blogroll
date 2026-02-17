@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Bloggar med fel",
-      "seeAll": "Se alla %{count} bloggar med fel"
+      "seeAll": "Se alla {{count}} bloggar med fel"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Spara",
       "empty": "Inga OPML-källor konfigurerade. Använd detta för att massimportera bloggar från FreshRSS eller andra flödesläsare.",
       "recent": "OPML-källor",
-      "interval": "Varje %{minutes} min",
+      "interval": "Varje {{minutes}} min",
       "lastSync": "Senast synkroniserad",
       "deleteConfirm": "Ta bort denna OPML-källa? Bloggar importerade från den kommer att finnas kvar.",
       "created": "OPML-källa skapad.",
       "created_synced": "OPML-källa skapad och synkroniserad.",
-      "created_sync_failed": "OPML-källa skapad, men synkronisering misslyckades: %{error}",
+      "created_sync_failed": "OPML-källa skapad, men synkronisering misslyckades: {{error}}",
       "updated": "OPML-källa uppdaterad.",
       "deleted": "OPML-källa borttagen.",
-      "synced": "Synkronisering lyckades. Tillagda: %{added}, Uppdaterade: %{updated}",
+      "synced": "Synkronisering lyckades. Tillagda: {{added}}, Uppdaterade: {{updated}}",
       "form": {
         "name": "Namn",
         "type": "Importtyp",
@@ -96,11 +96,11 @@
       "clearFilters": "Rensa filter",
       "deleteConfirm": "Ta bort denna blogg och alla dess cachade poster?",
       "created": "Blogg tillagd.",
-      "created_synced": "Blogg tillagd och synkroniserad. Hämtade %{items} poster.",
-      "created_sync_failed": "Blogg tillagd, men initial hämtning misslyckades: %{error}",
+      "created_synced": "Blogg tillagd och synkroniserad. Hämtade {{items}} poster.",
+      "created_sync_failed": "Blogg tillagd, men initial hämtning misslyckades: {{error}}",
       "updated": "Blogg uppdaterad.",
       "deleted": "Blogg borttagen.",
-      "refreshed": "Blogg uppdaterad. Lade till %{items} nya poster.",
+      "refreshed": "Blogg uppdaterad. Lade till {{items}} nya poster.",
       "form": {
         "discoverUrl": "Webbplats-URL",
         "discover": "Upptäck flöde",

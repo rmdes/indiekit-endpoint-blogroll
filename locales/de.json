@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Blogs mit Fehlern",
-      "seeAll": "Alle %{count} Blogs mit Fehlern anzeigen"
+      "seeAll": "Alle {{count}} Blogs mit Fehlern anzeigen"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Speichern",
       "empty": "Keine OPML-Quellen konfiguriert. Verwenden Sie diese Funktion, um Blogs aus FreshRSS oder anderen Feed-Readern zu importieren.",
       "recent": "OPML-Quellen",
-      "interval": "Alle %{minutes} Min.",
+      "interval": "Alle {{minutes}} Min.",
       "lastSync": "Zuletzt synchronisiert",
       "deleteConfirm": "Diese OPML-Quelle löschen? Importierte Blogs bleiben erhalten.",
       "created": "OPML-Quelle erfolgreich erstellt.",
       "created_synced": "OPML-Quelle erfolgreich erstellt und synchronisiert.",
-      "created_sync_failed": "OPML-Quelle erstellt, aber Synchronisation fehlgeschlagen: %{error}",
+      "created_sync_failed": "OPML-Quelle erstellt, aber Synchronisation fehlgeschlagen: {{error}}",
       "updated": "OPML-Quelle erfolgreich aktualisiert.",
       "deleted": "OPML-Quelle erfolgreich gelöscht.",
-      "synced": "Erfolgreich synchronisiert. Hinzugefügt: %{added}, Aktualisiert: %{updated}",
+      "synced": "Erfolgreich synchronisiert. Hinzugefügt: {{added}}, Aktualisiert: {{updated}}",
       "form": {
         "name": "Name",
         "type": "Import-Typ",
@@ -96,11 +96,11 @@
       "clearFilters": "Filter löschen",
       "deleteConfirm": "Diesen Blog und alle zwischengespeicherten Einträge löschen?",
       "created": "Blog erfolgreich hinzugefügt.",
-      "created_synced": "Blog hinzugefügt und synchronisiert. %{items} Einträge abgerufen.",
-      "created_sync_failed": "Blog hinzugefügt, aber erster Abruf fehlgeschlagen: %{error}",
+      "created_synced": "Blog hinzugefügt und synchronisiert. {{items}} Einträge abgerufen.",
+      "created_sync_failed": "Blog hinzugefügt, aber erster Abruf fehlgeschlagen: {{error}}",
       "updated": "Blog erfolgreich aktualisiert.",
       "deleted": "Blog erfolgreich gelöscht.",
-      "refreshed": "Blog aktualisiert. %{items} neue Einträge hinzugefügt.",
+      "refreshed": "Blog aktualisiert. {{items}} neue Einträge hinzugefügt.",
       "form": {
         "discoverUrl": "Website-URL",
         "discover": "Feed entdecken",

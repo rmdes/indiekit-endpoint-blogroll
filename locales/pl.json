@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Blogi z błędami",
-      "seeAll": "Zobacz wszystkie %{count} blogi z błędami"
+      "seeAll": "Zobacz wszystkie {{count}} blogi z błędami"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Zapisz",
       "empty": "Brak skonfigurowanych źródeł OPML. Użyj tego do masowego importu blogów z FreshRSS lub innych czytników kanałów.",
       "recent": "Źródła OPML",
-      "interval": "Co %{minutes} min",
+      "interval": "Co {{minutes}} min",
       "lastSync": "Ostatnio zsynchronizowano",
       "deleteConfirm": "Usunąć to źródło OPML? Importowane blogi pozostaną.",
       "created": "Źródło OPML utworzone pomyślnie.",
       "created_synced": "Źródło OPML utworzone i zsynchronizowane pomyślnie.",
-      "created_sync_failed": "Źródło OPML utworzone, ale synchronizacja nie powiodła się: %{error}",
+      "created_sync_failed": "Źródło OPML utworzone, ale synchronizacja nie powiodła się: {{error}}",
       "updated": "Źródło OPML zaktualizowane pomyślnie.",
       "deleted": "Źródło OPML usunięte pomyślnie.",
-      "synced": "Zsynchronizowano pomyślnie. Dodano: %{added}, Zaktualizowano: %{updated}",
+      "synced": "Zsynchronizowano pomyślnie. Dodano: {{added}}, Zaktualizowano: {{updated}}",
       "form": {
         "name": "Nazwa",
         "type": "Typ importu",
@@ -96,11 +96,11 @@
       "clearFilters": "Wyczyść filtry",
       "deleteConfirm": "Usunąć ten blog i wszystkie jego elementy w pamięci podręcznej?",
       "created": "Blog dodany pomyślnie.",
-      "created_synced": "Blog dodany i zsynchronizowany. Pobrano %{items} elementów.",
-      "created_sync_failed": "Blog dodany, ale początkowe pobieranie nie powiodło się: %{error}",
+      "created_synced": "Blog dodany i zsynchronizowany. Pobrano {{items}} elementów.",
+      "created_sync_failed": "Blog dodany, ale początkowe pobieranie nie powiodło się: {{error}}",
       "updated": "Blog zaktualizowany pomyślnie.",
       "deleted": "Blog usunięty pomyślnie.",
-      "refreshed": "Blog odświeżony. Dodano %{items} nowych elementów.",
+      "refreshed": "Blog odświeżony. Dodano {{items}} nowych elementów.",
       "form": {
         "discoverUrl": "URL strony internetowej",
         "discover": "Odkryj kanał",

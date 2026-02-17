@@ -27,15 +27,15 @@
     },
 
     "sync": {
-      "success": "Synced %{blogs} blogs, added %{items} items.",
-      "error": "Sync failed: %{error}",
+      "success": "Synced {{blogs}} blogs, added {{items}} items.",
+      "error": "Sync failed: {{error}}",
       "already_running": "A sync is already in progress.",
-      "cleared_success": "Cleared and re-synced %{blogs} blogs, added %{items} items."
+      "cleared_success": "Cleared and re-synced {{blogs}} blogs, added {{items}} items."
     },
 
     "errors": {
       "title": "Blogs met fouten",
-      "seeAll": "Bekijk alle %{count} blogs met fouten"
+      "seeAll": "Bekijk alle {{count}} blogs met fouten"
     },
 
     "sources": {
@@ -48,15 +48,15 @@
       "save": "Opslaan",
       "empty": "Geen OPML-bronnen geconfigureerd. Gebruik dit om blogs in bulk te importeren uit FreshRSS of andere feedlezers.",
       "recent": "OPML-bronnen",
-      "interval": "Elke %{minutes} min",
+      "interval": "Elke {{minutes}} min",
       "lastSync": "Laatst gesynchroniseerd",
       "deleteConfirm": "Deze OPML-bron verwijderen? Geïmporteerde blogs blijven behouden.",
       "created": "OPML-bron succesvol aangemaakt.",
       "created_synced": "OPML-bron succesvol aangemaakt en gesynchroniseerd.",
-      "created_sync_failed": "OPML-bron aangemaakt, maar synchronisatie mislukt: %{error}",
+      "created_sync_failed": "OPML-bron aangemaakt, maar synchronisatie mislukt: {{error}}",
       "updated": "OPML-bron succesvol bijgewerkt.",
       "deleted": "OPML-bron succesvol verwijderd.",
-      "synced": "Succesvol gesynchroniseerd. Toegevoegd: %{added}, Bijgewerkt: %{updated}",
+      "synced": "Succesvol gesynchroniseerd. Toegevoegd: {{added}}, Bijgewerkt: {{updated}}",
       "form": {
         "name": "Naam",
         "type": "Importtype",
@@ -96,11 +96,11 @@
       "clearFilters": "Filters wissen",
       "deleteConfirm": "Deze blog en alle gecachte items verwijderen?",
       "created": "Blog succesvol toegevoegd.",
-      "created_synced": "Blog toegevoegd en gesynchroniseerd. %{items} items opgehaald.",
-      "created_sync_failed": "Blog toegevoegd, maar initiële ophaling mislukt: %{error}",
+      "created_synced": "Blog toegevoegd en gesynchroniseerd. {{items}} items opgehaald.",
+      "created_sync_failed": "Blog toegevoegd, maar initiële ophaling mislukt: {{error}}",
       "updated": "Blog succesvol bijgewerkt.",
       "deleted": "Blog succesvol verwijderd.",
-      "refreshed": "Blog vernieuwd. %{items} nieuwe items toegevoegd.",
+      "refreshed": "Blog vernieuwd. {{items}} nieuwe items toegevoegd.",
       "form": {
         "discoverUrl": "Website-URL",
         "discover": "Feed ontdekken",
