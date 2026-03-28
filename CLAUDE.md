@@ -282,6 +282,15 @@ GET    /blogrollapi/api/opml/:category       Export category as OPML
 - Test Microsub integration (requires `@rmdes/indiekit-endpoint-microsub`)
 - Test soft delete behavior (re-sync should not recreate deleted blogs)
 
+## Startup Gate
+
+This plugin uses `@rmdes/indiekit-startup-gate` to defer background tasks until the host signals readiness (after Eleventy build completes). This prevents resource contention during the build.
+
+**Deferred:** `startSync()` — hourly sync from OPML/Microsub/FeedLand sources
+**Immediate:** Routes, indexes, collection registration
+
+See workspace CLAUDE.md for the full startup-gate pattern. Any new background tasks added to this plugin MUST be wrapped in `waitForReady()`.
+
 ## Common Tasks
 
 ### Add a New Source Type
