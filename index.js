@@ -7,6 +7,7 @@ import { blogsController } from "./lib/controllers/blogs.js";
 import { sourcesController } from "./lib/controllers/sources.js";
 import { apiController } from "./lib/controllers/api.js";
 import { startSync, stopSync } from "./lib/sync/scheduler.js";
+import { waitForReady } from "@rmdes/indiekit-startup-gate";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -142,11 +143,15 @@ export default class BlogrollEndpoint {
 
     // Start background sync if database is available
     if (Indiekit.config.application.mongodbUrl) {
-      startSync(Indiekit, this.options);
+      this._stopGate = waitForReady(
+        () => startSync(Indiekit, this.options),
+        { label: "Blogroll" },
+      );
     }
   }
 
   destroy() {
+    this._stopGate?.();
     stopSync();
   }
 }
