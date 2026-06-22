@@ -8,6 +8,7 @@ import { sourcesController } from "./lib/controllers/sources.js";
 import { apiController } from "./lib/controllers/api.js";
 import { startSync, stopSync } from "./lib/sync/scheduler.js";
 import { waitForReady } from "@rmdes/indiekit-startup-gate";
+import { BLOGROLL_BLOCKS } from "./lib/blocks.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -53,6 +54,10 @@ export default class BlogrollEndpoint {
       iconName: "bookmark",
       requiresDatabase: true,
     };
+  }
+
+  get blocks() {
+    return BLOGROLL_BLOCKS;
   }
 
   /**
