@@ -45,6 +45,7 @@
     "@indiekit/frontend": "^1.0.0-beta.25",
     "express": "^5.0.0",
     "feedparser": "^2.2.10",
+    "mongodb": "^7.5.0",
     "sanitize-html": "^2.13.0",
     "xml2js": "^0.6.2"
   },
